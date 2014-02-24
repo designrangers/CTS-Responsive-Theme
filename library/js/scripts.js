@@ -66,7 +66,12 @@ jQuery(document).ready(function($) {
     
 	
 	// add all your scripts here
+
+    // Top menu
     var menu = new cbpHorizontalSlideOutMenu( document.getElementById( 'cbp-hsmenu-wrapper' ) );
+    
+    // Twitter feed
+    
  
 }); /* end of as page load scripts */
 

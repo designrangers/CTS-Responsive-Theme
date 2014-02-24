@@ -56,5 +56,5 @@
 				    </div>
 			  	</div>
 			  	<?php get_template_part( 'partials/nav', 'header' ); ?>
-			  	<?php get_template_part( 'partials/nav', 'offcanvas' ); ?>
+			  	<!--<?php get_template_part( 'partials/nav', 'offcanvas' ); ?>-->
 			</header><!-- end header -->

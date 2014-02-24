@@ -129,6 +129,9 @@ function joints_scripts_and_styles() {
 
     // adding Header Menu styles
     wp_register_script( 'header-menu-js', get_template_directory_uri() . '/library/js/cts/cbpHorizontalSlideOutMenu.min.js', array(), '', false);
+
+    // Twitter Tweetie plugin
+    wp_register_script( 'twitter-feed-js', get_template_directory_uri() . '/library/js/Tweetie-2.1.1/tweetie.min.js', array('jquery'), '', false);
    
     // register main stylesheet
     wp_register_style( 'joints-stylesheet', get_template_directory_uri() . '/library/css/style.css', array(), '', 'all' );
@@ -148,6 +151,7 @@ function joints_scripts_and_styles() {
     wp_enqueue_script( 'joints-modernizr' );
     wp_enqueue_script ('foundation-js');
     wp_enqueue_script ('header-menu-js');
+    wp_enqueue_script ('twitter-feed-js');
     wp_enqueue_style( 'joints-stylesheet' );
      wp_enqueue_style( 'foundation-icons' );
 

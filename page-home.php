@@ -5,52 +5,35 @@ Template Name: Homepage
 ?>
 
 <?php get_header(); ?>
-
-	<!-- Main hero image slider -->
+  <!-- Main hero image slider -->
     <div class="home-hero">
-      <ul class="cts-homeslider" data-orbit data-options="animation-speed:2500;pause-on-hover:true;bullets:false;">
-        <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/library/images/slider-temp1.jpg" alt="">
-          <div class="orbit-caption">
-            <h2 class="large">
-              <span>New Brand. New Look.</span><br />
-              Same Proven Results.
-            </h2>
-            <a class="cts-button">Our Story</a>
-          </div>
-        </li>
-        <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/library/images/slider-temp2.jpg" alt="">
-          <div class="orbit-caption">
-            <h2 class="large">
-              <span>Turn the Corner.</span><br />
-              Come to Our Camps.
-            </h2>
-            <a class="cts-button">Our Camps</a>
-          </div>
-        </li>
-        <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/library/images/slider-temp3.jpg" alt="">
-          <div class="orbit-caption">
-            <h2 class="large">
-              <span>Bucket List item #244.</span><br />
-              Checked Off.
-            </h2>
-            <a class="cts-button">Our Adventures</a>
-          </div>
-        </li>
-        <li>
-          <img src="<?php echo get_template_directory_uri(); ?>/library/images/slider-temp4.jpg" alt="">
-          <div class="orbit-caption">
-            <h2 class="large">
-              <span>World Class Coaches.</span><br />
-              Your New Friends.
-            </h2>
-            <a class="cts-button">Our Coaches</a>
-          </div>
-        </li>
-      </ul>
+        <ul class="cts-homeslider" data-orbit data-options="animation-speed:2500;pause-on-hover:true;bullets:false;timer:false;">
+        <?php if( have_rows('cts_home_slideshow') ):
+          while ( have_rows('cts_home_slideshow') ) : the_row(); ?>
+          <li>
+            <?php $image = get_sub_field('cts_slide_image'); ?>
+              <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" />
+              <?php if( get_sub_field('cts_slide_text_alignment') == 'text-on-left' ): ?>   
+                <div class="orbit-caption description heroleft">
+                <?php the_sub_field('cts_slide_text'); ?>
+              </div>
+            <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-on-right' ): ?>
+               <div class="orbit-caption description heroright">
+                <?php the_sub_field('cts_slide_text'); ?>
+              </div>
+            <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-in-center' ): ?>
+               <div class="orbit-caption description herocenter">
+                <?php the_sub_field('cts_slide_text'); ?>
+              </div>
+              <?php endif; 
+            endwhile;
+          else :
+            // no rows found  
+          endif; ?>
+            </li>
+        </ul>
     </div>
+
     <!-- Infographics -->
     <div class="section-light infographics">
       <div class="row infographics-title">
@@ -79,10 +62,12 @@ Template Name: Homepage
       </div>
     </div><!-- end infographics -->
     <!-- Call-to-action -->
-    <div class="section-cta">
+    <div class="section-twitterfeed">
       <div class="row">
-        <div class="large-12 columns">
-          <?php the_field("infographic_cta"); ?>
+        <div class="large-12 columns cts-hometweets">
+          <h3>Updates and Accomplishments</h3>
+          <div class="tweet">
+          </div>
         </div>
       </div>
     </div><!-- end call-to-action -->
@@ -136,5 +121,22 @@ Template Name: Homepage
 				</div> <!-- end #inner-content -->
     
 			</div> <!-- end #content -->
+      <script class="source" type="text/javascript">
+         $('.cts-hometweets .tweet').twittie({
+          username: 'trainright',
+          dateFormat: '%b. %d, %Y',
+          template: '<strong class="date">{{date}}</strong><br />{{tweet}}',
+          apiPath: '/cts/wp-content/themes/cts/library/js/Tweetie-2.1.1/api/tweet.php',
+          count: 10
+      });
+
+      setInterval(function() {
+          var item = $('.cts-hometweets .tweet ul').find('li:first');
+
+          item.animate( {marginLeft: '-480px', 'opacity': '0'}, 500, function() {
+              $(this).detach().appendTo('.cts-hometweets .tweet ul').removeAttr('style');
+          });
+      }, 8000);
+      </script>
 
 <?php get_footer(); ?>
