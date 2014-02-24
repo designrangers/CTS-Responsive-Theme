@@ -1,0 +1,598 @@
+/******************************************************************
+
+Stylesheet: CTS Specific Styles
+Measurements based on a Modular Scale:
+Ideal type size: 16px; Important number: 18px; 1:1:618: - golden section 
+http://modularscale.com/scale/?px1=16&px2=18&ra1=1.618&ra2=0
+
+******************************************************************/
+
+
+/*************** HEADER ***************/
+.header-full {
+	background-color: rgba(10,50,83,.8);
+	border-top: 8px solid $secondary-color;
+}
+h1.logo {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	position: absolute;
+	z-index: 1000;
+}
+.nav-secondary a {
+	color: #fff;
+	font-family: Montserrat, sans-serif;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 26px;
+	height: 26px;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 2px rgba(15, 47, 74, 0.5);
+}
+.nav-secondary a:hover {
+	opacity: 0.8;
+}
+.header-login {
+	background: $secondary-color;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.nav-main {
+	clear: both;
+}
+.top-bar section .right {
+	background: none;
+}
+.cbp-hsmenu-wrapper a {
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+/*************** DEEP NAV ***************/
+.deep-nav-container {
+	background: url('../images/sidenav-bkd.png') repeat-y right top;	
+	border-right: 1px solid #ccc;
+	margin-top: -48px;
+	margin-bottom: -48px;
+	padding-top: 48px;
+	padding-bottom: 48px;
+}
+.side-nav > li {
+	border-bottom: 1px solid #ccc;
+}
+
+/*************** FOOTER ***************/
+.cts-partner-logos {
+	float: left;
+	margin-left: 13px;
+	margin-right: 13px;
+}
+
+footer {
+	background-color: #151e27;
+	padding-top:48px;
+	padding-bottom:48px;
+}
+.side-nav-footer {
+	@include side-nav();
+	padding-top: 0;
+}
+.side-nav-footer {
+	li a {
+		font-family: $heading-font-family;
+		font-weight: 400;
+		font-size: 16px;
+		color: #fff;
+		text-transform: uppercase;
+		margin-bottom: 7px;
+	}
+	li a:hover {
+		color: #a7a9ab;
+		color: rgba(255,255,255,.5);
+	}
+	li a:hover {
+
+	}
+	li ul {
+		list-style-type: none;
+		list-style-position: inside;
+		margin-left: 0;
+		margin-bottom: 16px;
+		line-height: 13px;
+	}
+	li ul a {
+		font-family: $body-font-family;
+		font-weight: $body-font-weight;
+		font-size: 13px;
+		text-transform: none;
+		margin-bottom: 0;
+	}
+}
+.cts-footer-connect {
+	color: #fff;
+}
+.cts-footer-connect {
+	p, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+	h4 {
+		font-size: 16px;
+		margin-top: 0;
+		text-transform: uppercase;
+	}
+}
+.footer-social, .footer-newsletter, .footer-cta {
+	margin-bottom: 30px;
+}
+
+/*************** SECTIONS ***************/
+.section-dark .row, .section-light .row, .section-xtralight .row, .section-xtradark .row {
+	padding-top:48px;
+	padding-bottom:48px;
+}
+.section-dark {
+	background-color: $primary-color;
+	color: #fff;
+}
+.section-dark {
+	p {
+		color: #fff;
+	}
+}
+.section-xtradark {
+	background-color: #2c2525;
+	color: #fff;
+}
+.section-xtradark {
+	h1, h2, h3, h4, p {
+		color: #fff;
+	}
+}
+.section-light {
+	background: url('../images/lightpanelbkgd.jpg');
+}
+.section-xtralight {
+	background: #fff;
+}
+.section-cta {
+	background-color: #8aa79e;
+	text-align: center;
+	padding-top: 29px;
+	padding-bottom: 29px;
+}
+.section-cta {
+	a {
+		color: #fff;
+		font-family: $heading-font-family;
+		font-size: 18px;
+		text-transform: uppercase;
+	}
+	a:hover {
+		opacity: 0.8;
+	}
+}
+/*************** TYPOGRAPHY ***************/
+h1, h2, h3, h4 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+h2, .h2 {
+    font-size: 29px; 
+    line-height: 29px;
+    color: rgba(203,30,65,1);
+    text-transform: uppercase;
+    letter-spacing: .034em;
+    margin: 0px 0px 24px 0px;
+}
+h2.large {
+	font-size: 39px;
+	line-height: 39px;
+}
+h4 {
+	font-weight: 400;
+	text-transform: uppercase;
+}
+/*************** IMAGES ***************/
+.hug-bottom {
+	margin-bottom: -48px;
+}
+
+/*************** BUTTONS ***************/
+.cts-button {
+	@include button;
+	background: $secondary-color;
+	background: #e899a9; /* Old browsers */
+	background: #d33f5d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #d33f5d 20%, #cb1e41 80%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(20%,#d33f5d), color-stop(80%,#cb1e41)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #d33f5d 20%,#cb1e41 80%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #d33f5d 20%,#cb1e41 80%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #d33f5d 20%,#cb1e41 80%); /* IE10+ */
+	background: linear-gradient(to bottom,  #d33f5d 20%,#cb1e41 80%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d33f5d', endColorstr='#cb1e41',GradientType=0 ); /* IE6-9 */
+	-webkit-box-shadow: 0 0 0 11px rgba(255,255,255,.2);
+	box-shadow: 0 0 0 11px rgba(255,255,255,.2);
+	border-top: 1px solid #e899a9;
+	border-bottom: 1px solid #8a142c;
+	border-radius: $global-rounded;
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	text-transform:	uppercase;
+}
+.cts-button:hover {
+	background: $secondary-color;
+	border-top: 1px solid #8a142c;
+	border-bottom: 1px solid #8a142c;
+	box-shadow: 0 0 0 11px rgba(255,255,255,.4);
+}
+.cta-buttons {
+	margin-top: 47px;
+}
+
+/*************** HOMEPAGE ***************/
+.home-hero {
+	min-width: 960px;
+	text-align: center;
+}
+.home-hero .orbit-container .orbit-slides-container>* .orbit-caption {
+	width: 45%;
+	background: none;
+	color: #fff;
+	margin-right: 67px;
+	right: 0;
+	top: 250px;
+}
+.home-hero {
+	.orbit-container {
+		max-height: 655px;
+	}
+	.orbit-container .orbit-slides-container img {
+		width: 100%
+	}
+	.orbit-container .orbit-next, .orbit-container .orbit-prev {
+		background-color: rgba(203,30,65,0.8);
+		width: 39px;
+		height: 39px;
+		border-radius: 1000px;
+	}
+	.orbit-prev {
+		margin-left: 39px;
+	}
+	.orbit-prev span {
+		left: 8%;
+	}
+	.orbit-next {
+		margin-right: 39px;
+	}
+}
+.home-hero h2 {
+	color: #fff;
+	text-shadow: 0px 1px 2px rgba(15, 47, 74, 0.8);
+}
+.home-hero h2 span {
+	font-size: 29px;
+	font-weight:400;
+}
+.infographics {
+	text-align: center;
+}
+.row.infographics-data {
+	padding-top: 0;
+}
+.infographics-data img {
+	margin-bottom: 29px;	
+}
+.infographics-title, .upcoming-camps-title {
+	h2, h3{
+		line-height: 39px;
+		margin-bottom: 0;
+	}
+	h2 {
+		color: $primary-color;
+		font-size: 39px;
+		letter-spacing: normal;
+		text-transform: none;
+	}
+	h3 {
+		color: #8aa79e;
+	    font-size: 29px;
+	    font-family: Signika, sans-serif;
+	    font-weight: 400;
+	    font-style: normal;
+	}
+}
+.infographics-data h2 {
+	margin-bottom: 11px;
+}
+.cts-story .row {
+	background: url('../images/chris-monotone.jpg') no-repeat;
+}
+.row.featured-coaches {
+	padding-top: 0;
+}
+.coach-block {
+	display: block;
+	margin-top: 30px;
+}
+.top-block {
+	margin-top: 0;
+}
+.cts-coaches {
+	text-align: center
+}
+.cts-coaches h2 {
+	margin-bottom: 0;
+}
+.cts-coaches p {
+	margin-top: 7px;
+	margin-bottom: 0;
+}
+.cts-coaches p a {
+	color:  $secondary-color;
+}
+.coach-image {
+	position: relative;
+}
+.coach-name {
+	display: none;
+	background: rgba(10,50,84,.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
+.coach-name {
+	h3, h4, p {
+		color: #fff;
+	}
+	h3, h4 {
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+	h3 {
+		margin-top: 38%;	
+		font-size: 18px;
+	}
+}
+.coach-block:hover .coach-name {
+	display: block;
+}
+.coach-more {
+	display: block;
+	position: relative;
+}
+.coach-more {
+	img {
+		background-color:#8aa79e;
+		width: 100%;
+	}
+	.coach-info {
+		color: #fff;
+		padding: 18px;
+		position: absolute;
+	}
+	.coach-info h4 {
+		color: #fff;
+	}
+	:hover + img {
+		background-color: #a0b4aa;
+	}
+}
+.cts-partners h3 {
+	color: #8aa79e;
+	font-size: 18px;
+	margin-bottom: 39px;
+	text-align: center;
+	text-transform: uppercase;
+}
+/*************** SECONDARY PAGES ***************/
+body.secondary {
+
+}
+.secondary-hero {
+	position: relative;
+	max-height: 655px;
+	overflow: hidden;
+}
+.secondary-hero {
+	.description {
+		position: absolute;
+		top: 200px;
+		width: 100%;
+		text-align: center;
+	}
+	img {
+		width: 100%;
+	}
+	.heroleft {
+		padding-right: 50%;
+		padding-left: 15%;
+	}
+	.heroright {
+		padding-left: 50%;
+		padding-right: 15%;
+	}
+	.herocenter {
+		padding-left: 15%;
+		padding-right: 15%;
+	}
+	h2 {
+		color: #fff;
+		text-shadow: 0px 1px 2px rgba(15, 47, 74, 0.8);
+	}
+	h2 span {
+		font-size: 29px;
+		font-weight:400;
+	}
+}
+.secondary-title .row {
+	text-align: center;
+	padding-bottom: 0;
+}
+.tight {padding: 0;}
+.alternate-hero {
+	height: 500px;
+	text-align: left;
+	padding-right: 0;
+}
+.alternate-hero {
+	.description {
+		background-color: #000;
+		height: 392px;
+		margin-top: 108px;
+		padding-top: 40px;
+		padding-left: 40px;
+		margin-left: -40px;
+	}
+	.image {
+		background-color: #555;
+		height: 500px;
+	}
+	h2 {
+		color: #fff;
+		text-shadow: 0px 1px 2px rgba(15, 47, 74, 0.8);
+	}
+	h2 span {
+		font-size: 29px;
+		font-weight:400;
+	}
+}
+.full-width-image {
+	position: relative;
+}
+.full-width-image {
+	img {
+		width: 100%;
+	}
+	.caption-container {
+		background: rgba(0,0,0,0.7);
+		color: #fff;
+		position: absolute;
+		bottom: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		width: 100%;
+	}
+	.caption {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+		max-width: 62.5rem;
+		text-align: center;
+	}
+}
+/*************** CAMP PAGES ***************/
+.secondary-title .upcoming-camps-title {
+	padding-bottom: 48px;
+}
+.camp-story .row {
+	background: url('../images/camps-overlay.jpg') no-repeat;
+}
+.camp-facts {
+	border-left: 1px solid #333;
+	min-height: 200px;
+	padding-left: 29px;
+}
+.camp-facts h4 {
+	line-height: 37px;
+}
+h4.camp-date {
+	font-size: 48px;
+	line-height: 48px;
+	font-weight: 700;
+}
+.camp-categories {
+	background-color: #8aa79e;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 29px;
+	padding-bottom: 29px;
+}
+.camp-categories {
+	.inline-list {
+		margin-bottom: 0;
+	}
+	a {
+		color: #fff;
+		font-family: $heading-font-family;
+		font-size: 18px;
+		padding-left: 11px;
+		padding-right: 11px;
+		text-transform: uppercase;
+	}
+	a:hover {
+		opacity: 0.8;
+	}
+}
+/*************** CAMP SINGLE PAGES ***************/
+.camp-hero {
+	height: 250px;
+	background: url('../images/camps-header.jpg') no-repeat top center;
+	background-size: cover;
+}
+.camp-hero {
+	date {
+		color: #fff;
+		font-family: $heading-font-family;
+		font-size: 18px;
+		font-weight: 400;
+		font-style: normal;
+	}
+	.description {
+		top: 135px;
+	}
+}
+.camp-single-content {
+	background-color: #fff;
+	padding: 30px;
+	min-height: 800px;
+}
+.camp-single-content .row {
+	padding-top: 0;
+}
+#camp_lodging, #camp_itinerary {
+	width: 100%;
+}
+.tabs.camp-detail-tabs dd > a {
+	font-size: 14px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/*************** MEDIA QUERIES ***************/
+@media #{$small-only} { 
+	.header-full {
+		position: relative;
+		background-color: rgba(10,50,83,1);
+	}
+	h1.logo {
+		position: relative;
+		text-align: center;
+	}
+	.nav-secondary {
+		display:none
+	}
+	.home-hero {
+		min-width:200px;
+	}
+	.home-hero .orbit-container .orbit-slides-container>* .orbit-caption {
+		background-color: #8aa79e;
+		position: relative;
+		width: 100%;
+		margin-right: 0;
+		top:0;
+	}
+	.orbit-container .orbit-prev, .orbit-container .orbit-next {
+		top: 20%;
+	}
+	.top-block {
+		margin-top: 30px;
+	}	
+}
