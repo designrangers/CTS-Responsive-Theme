@@ -6249,6 +6249,10 @@ footer {
   font-size: 13px;
   text-transform: none;
   margin-bottom: 0; }
+.side-nav-footer li.footer-login a {
+  color: #cb1e41; }
+.side-nav-footer li.footer-login a:hover {
+  opacity: .5; }
 
 .cts-footer-connect {
   color: #fff; }
@@ -6260,8 +6264,51 @@ footer {
   margin-top: 0;
   text-transform: uppercase; }
 
+.footer-social ul {
+  margin: 0;
+  margin-right: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden; }
+.footer-social ul li {
+  list-style: none;
+  float: left;
+  margin-right: 10px;
+  display: block; }
+.footer-social .facebook a, .footer-social .twitter a, .footer-social .youtube a {
+  background: url("../images/CTS-social-sprites.png");
+  display: block;
+  height: 36px;
+  width: 36px;
+  text-indent: -999999px; }
+.footer-social .twitter a {
+  background-position-x: -36px; }
+.footer-social .youtube a {
+  background-position-x: -72px; }
+.footer-social a:hover {
+  background-position-y: 36px; }
+
 .footer-social, .footer-newsletter, .footer-cta {
   margin-bottom: 30px; }
+
+.cts-footer-newsletter {
+  margin-bottom: 30px; }
+
+.cts-footer-newsletter label {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 7px; }
+
+.cts-footer-newsletter input[type="text"] {
+  background-color: #2d353d;
+  color: #fff;
+  border: 1px solid #050f1b; }
+
+.footer-cta h4 {
+  margin-bottom: 26px; }
 
 /*************** SECTIONS ***************/
 .section-dark .row, .section-light .row, .section-xtralight .row, .section-xtradark .row {
@@ -6735,12 +6782,48 @@ h4.camp-date {
     width: 100%;
     margin-right: 0;
     top: 0; }
+  .home-hero h2 {
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 26px;
+    margin-top: 18px; }
+  .home-hero h2 span {
+    font-size: 22px; }
+  .home-hero .cts-button {
+    margin-top: 0;
+    margin-top: 0; }
 
   .orbit-container .orbit-prev, .orbit-container .orbit-next {
     top: 20%; }
 
   .top-block {
-    margin-top: 30px; } }
+    margin-top: 30px; }
+
+  .section-dark img {
+    margin-bottom: 0 !important; }
+
+  .col-2 {
+    padding-top: 30px; }
+
+  /* Buttons */
+  .cts-button {
+    margin-top: 18px; }
+
+  /* Footer */
+  .side-nav-footer li ul {
+    margin-bottom: 30px; }
+  .side-nav-footer li ul a {
+    border-bottom: 1px solid #444b52;
+    font-family: "Signika", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 0;
+    padding-top: 11px;
+    padding-bottom: 14px; }
+  .side-nav-footer li.footer-login a {
+    color: #cb1e41; }
+  .side-nav-footer li.footer-login a:hover {
+    opacity: .5; } }
 /*
 SMALL (BASE) SIZE
 These are the small/base styles. It's what people see on their phones. If

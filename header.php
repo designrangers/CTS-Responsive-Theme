@@ -38,8 +38,8 @@
 
 	<body <?php body_class(); ?>>
 
-	<div class="off-canvas-wrap">
-		<div class="inner-wrap">
+	<div class="">
+		<div class="">
 			<header class="header-full fixed" role="banner">
 				<div class="row">
 				    <div class="large-4 small-12 columns">

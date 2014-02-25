@@ -43,10 +43,10 @@
 						<?php elseif( get_sub_field('cts_darkrow_cols') == 'two-columns' ): ?>
 						<div class="section-dark">
 	        				<div class="row">
-									<div class="medium-6 columns">
+									<div class="medium-6 columns col-1">
 										<?php the_sub_field('cts_darkrow1_content'); ?>
 									</div>
-									<div class="medium-6 columns">
+									<div class="medium-6 columns col-2">
 										<?php the_sub_field('cts_darkrow2_content'); ?>
 									</div>
 							</div>

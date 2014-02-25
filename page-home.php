@@ -7,7 +7,7 @@ Template Name: Homepage
 <?php get_header(); ?>
   <!-- Main hero image slider -->
     <div class="home-hero">
-        <ul class="cts-homeslider" data-orbit data-options="animation-speed:2500;pause-on-hover:true;bullets:false;timer:false;">
+        <ul class="cts-homeslider" data-orbit data-options="animation-speed:2500;pause-on-hover:true;bullets:false;slide_number:false;timer:false;">
         <?php if( have_rows('cts_home_slideshow') ):
           while ( have_rows('cts_home_slideshow') ) : the_row(); ?>
           <li>
@@ -126,7 +126,7 @@ Template Name: Homepage
           username: 'trainright',
           dateFormat: '%b. %d, %Y',
           template: '<strong class="date">{{date}}</strong><br />{{tweet}}',
-          apiPath: '/cts/wp-content/themes/cts/library/js/Tweetie-2.1.1/api/tweet.php',
+          apiPath: '/wp-content/themes/cts/library/js/Tweetie-2.1.1/api/tweet.php',
           count: 10
       });
 

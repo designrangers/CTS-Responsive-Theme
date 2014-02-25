@@ -40,7 +40,7 @@
 		      </div>
 		    </div>
 		    <!-- Footer -->
-			<footer class="">
+			<footer class="cts-footer">
 				<div class="row">
 					<div class="medium-8 columns cts-footer-menus">
 						<div class="row">

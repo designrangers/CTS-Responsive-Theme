@@ -111,6 +111,12 @@ footer {
 		text-transform: none;
 		margin-bottom: 0;
 	}
+	li.footer-login a {
+		color: $secondary-color;
+	}
+	li.footer-login a:hover {
+		opacity: .5;
+	}
 }
 .cts-footer-connect {
 	color: #fff;
@@ -125,8 +131,58 @@ footer {
 		text-transform: uppercase;
 	}
 }
+.footer-social {
+	ul {
+		margin: 0;
+		margin-right: 0;
+		padding: 0;
+		list-style: none;
+		overflow: hidden;
+	}
+	ul li {
+		list-style: none;
+		float: left;
+		margin-right: 10px;
+		display: block;
+	}
+	.facebook a, .twitter a, .youtube a {
+		background: url('../images/CTS-social-sprites.png');
+		display: block;
+		height: 36px;
+		width: 36px;
+		text-indent: -999999px;
+	}
+	.twitter a {
+		background-position-x: -36px;
+	}
+	.youtube a {
+		background-position-x: -72px;
+	}
+	a:hover {
+		background-position-y: 36px;
+	}
+}
 .footer-social, .footer-newsletter, .footer-cta {
 	margin-bottom: 30px;
+}
+.cts-footer-newsletter {
+	margin-bottom: 30px;
+}
+.cts-footer-newsletter label {
+	font-family: $heading-font-family;
+	font-weight: 400;
+	font-size: 16px;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 7px;
+}
+.cts-footer-newsletter input[type="text"] {
+	background-color: #2d353d;
+	color: #fff;
+	border: 1px solid #050f1b;
+}
+.footer-cta h4 {
+	margin-bottom: 26px;
 }
 
 /*************** SECTIONS ***************/
@@ -623,22 +679,68 @@ h4.camp-date {
     	background-color: #051e37;
   	}
 	.nav-secondary {
-		display:none
+		display:none;
 	}
 	.home-hero {
 		min-width:200px;
 	}
-	.home-hero .orbit-container .orbit-slides-container>* .orbit-caption {
-		background-color: #8aa79e;
-		position: relative;
-		width: 100%;
-		margin-right: 0;
-		top:0;
+	.home-hero {
+		.orbit-container .orbit-slides-container>* .orbit-caption {
+			background-color: #8aa79e;
+			position: relative;
+			width: 100%;
+			margin-right: 0;
+			top:0;
+		}
+		h2 {
+			font-size: 30px;
+			line-height: 30px;
+			margin-bottom: 26px;
+			margin-top: 18px;
+		}
+		h2 span {
+			font-size: 22px;
+		}
+		.cts-button {
+			margin-top: 0;
+			margin-top: 0;
+		}
 	}
 	.orbit-container .orbit-prev, .orbit-container .orbit-next {
 		top: 20%;
 	}
 	.top-block {
 		margin-top: 30px;
-	}	
+	}
+	.section-dark img {
+		margin-bottom: 0!important;
+	}
+	.col-2 {
+		padding-top: 30px;
+	}
+	/* Buttons */
+	.cts-button {
+		margin-top: 18px;
+	}
+	/* Footer */
+	.side-nav-footer {
+	li ul {
+		margin-bottom: 30px;
+	}
+	li ul a {
+		border-bottom: 1px solid #444b52;
+		font-family: $body-font-family;
+		font-weight: $body-font-weight;
+		font-size: 16px;
+		margin-bottom: 0;
+		padding-top: 11px;
+		padding-bottom: 14px;
+	}
+	li.footer-login a {
+		color: $secondary-color;
+	}
+	li.footer-login a:hover {
+		opacity: .5;
+	}
+}
 }
