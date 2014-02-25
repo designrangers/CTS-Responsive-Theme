@@ -7,6 +7,10 @@ http://modularscale.com/scale/?px1=16&px2=18&ra1=1.618&ra2=0
 
 ******************************************************************/
 
+/*************** MOVE CONTENT DOWN WHEN LOGGED-IN ***************/
+body.admin-bar .header-full {
+margin-top: 32px;
+}
 
 /*************** HEADER ***************/
 .header-full {
@@ -64,9 +68,8 @@ h1.logo {
 
 /*************** FOOTER ***************/
 .cts-partner-logos {
-	float: left;
-	margin-left: 13px;
-	margin-right: 13px;
+	display: inline-block;
+	margin: 10px;
 }
 
 footer {

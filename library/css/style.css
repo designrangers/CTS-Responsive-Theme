@@ -6135,6 +6135,10 @@ Ideal type size: 16px; Important number: 18px; 1:1:618: - golden section
 http://modularscale.com/scale/?px1=16&px2=18&ra1=1.618&ra2=0
 
 ******************************************************************/
+/*************** MOVE CONTENT DOWN WHEN LOGGED-IN ***************/
+body.admin-bar .header-full {
+  margin-top: 32px; }
+
 /*************** HEADER ***************/
 .header-full {
   background-color: rgba(10, 50, 83, 0.8);
@@ -6190,9 +6194,8 @@ h1.logo {
 
 /*************** FOOTER ***************/
 .cts-partner-logos {
-  float: left;
-  margin-left: 13px;
-  margin-right: 13px; }
+  display: inline-block;
+  margin: 10px; }
 
 footer {
   background-color: #151e27;
