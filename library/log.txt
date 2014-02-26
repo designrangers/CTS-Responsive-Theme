@@ -14,3 +14,11 @@ http://jengl.com
 - Early beta release
 - Foundation 4.0.9
 - Sass and CSS versions
+
+
+2.26.14
+- Changed joints.php to pull-in individual scripts for foundation instead of all scripts for better performance. Current scripts in place include:
+	- Foundation core
+	- Orbit slider
+	- Reveal lightbox
+- Removed FastClick script in foundation.js for better compatibility with UberMenu
