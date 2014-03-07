@@ -138,7 +138,7 @@ single-bookmarks.php
 													endif; ?>
 												</p>
 												<strong>Cancellation:</strong>
-												<p><a href="/camps/cancellation-policy">Click to view Cancellation Policy</a></p>
+												<p><a href="/camp-overview/cancellation-policy">Click to view Cancellation Policy</a></p>
 											</div>
 											<div id="camp_arrival" class="content">
 												<h4>Arrival/Departure</h4>
