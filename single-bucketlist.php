@@ -34,14 +34,15 @@ single-bookmarks.php
 						<div class="row">
 							<div class="medium-8 columns">
 								<div class="camp-single-hero">
-									<?php $bucketlist_image = get_field('bucketlist_image'); ?>
+									<?php $bucketlist_image = get_field('bucketlist_hero_image'); ?>
 	    							<img src="<?php echo $bucketlist_image['url']?>" alt="<?php echo $bucketlist_image['alt']?>" />
 								</div>
 								<div class="camp-single-content">
 									<dl class="tabs" data-tab>
 									  <dd class="active"><a href="#bucketlist_description">Description</a></dd>
-									  <dd><a href="#bucketlist_price">Price</a></dd>
-									  <dd><a href="#bucketlist_addons">Add-ons</a></dd>
+									  <dd><a href="#bucketlist_includes">Includes</a></dd>
+									  <dd><a href="#bucketlist_gallery">Videos &amp; Photos</a></dd>
+									  <dd><a href="#bucketlist_testimonials">Quotes</a></dd>
 									</dl>
 									<div class="tabs-content">
 										<div id="bucketlist_description" class="content active">
@@ -49,15 +50,32 @@ single-bookmarks.php
 												the_field('bucketlist_description');
 											endif; ?>
 										</div>
-										<div id="bucketlist_price" class="content">
-											<?php if( get_field('bucketlist_price') ):
-												echo '<h4>' . get_field('bucketlist_price') . '</h4>';
+										<div id="bucketlist_includes" class="content">
+											<?php if( get_field('bucketlist_includes') ):
+												the_field('bucketlist_includes');
 											endif; ?>
 										</div>
-										<div id="bucketlist_addons" class="content">
-											<h4>Itinerary</h4>
-											<?php if( get_field('bucketlist_addons') ):
-												the_field('bucketlist_addons');
+										<div id="bucketlist_gallery" class="content">
+											<h4>Videos &amp; Photos</h4>
+											<?php if( get_field('bucketlist_videos') ):
+												the_field('bucketlist_videos');
+											endif; ?>
+											<?php 
+ 
+												$image_ids = get_field('bucketlist_gallery', false, false);
+												 
+												$shortcode = '
+												 
+												[gallery ids="' . implode(',', $image_ids) . '"]
+												';
+												 
+												echo do_shortcode( $shortcode );
+												 
+											?>
+										</div>
+										<div id="bucketlist_testimonials" class="content active">
+											<?php if( get_field('bucketlist_testimonials') ):
+												the_field('bucketlist_testimonials');
 											endif; ?>
 										</div>
 									</div>
@@ -84,7 +102,30 @@ single-bookmarks.php
 					<section class="cts-cta section-xtralight">
 						<div class="row">
 							<div class="medium-12 columns">
-								<h2>Photo Gallery</h2>
+								<h2>Registration</h2>
+								<?php if( get_field('bucketlist_registration') ):
+									the_field('bucketlist_registration');
+								endif; ?>
+							</div>
+						</div>
+					</section>
+					<section class="cts-cta section-light">
+						<div class="row">
+							<div class="medium-12 columns">
+								<h2>Add-ons</h2>
+								<?php if( get_field('bucketlist_addons') ):
+									the_field('bucketlist_addons');
+								endif; ?>
+							</div>
+						</div>
+					</section>
+					<section class="cts-cta section-xtralight">
+						<div class="row">
+							<div class="medium-12 columns">
+								<h2>Cancellations</h2>
+								<?php if( get_field('bucketlist_cancellations') ):
+									the_field('bucketlist_cancellations');
+								endif; ?>
 							</div>
 						</div>
 					</section>
