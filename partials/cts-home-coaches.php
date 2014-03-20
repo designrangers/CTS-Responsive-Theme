@@ -11,7 +11,7 @@ if( $posts ): ?>
             <div class="coach-image">
               <?php $coachheadshot = get_field('coach_headshot'); ?>
                 <?php if($coachheadshot) { ?>
-                    <img src="<?php echo $coachheadshot['url']?>" alt="<?php echo $coachheadshot['alt']?>" />
+                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400']; ?>" alt="<?php echo $coachheadshot['alt']; ?>" />
                 <?php } else { ?>
                   <img src="http://placehold.it/400x400&text=Coach Image" />
                 <?php 
@@ -19,6 +19,7 @@ if( $posts ): ?>
               <div class="coach-name">
                 <h3><?php the_title(); ?></h3>
                 <p><?php the_field('coaches_residence'); ?></p>
+                <span>Read Coach Bio</span>
               </div>
             </div>
           </a>
@@ -30,7 +31,7 @@ if( $posts ): ?>
               <?php if($coachimage) { ?>
                   <img src="<?php echo $coachimage['url']?>" alt="<?php echo $coachimage['alt']?>" />
               <?php } else { ?>
-                <img src="http://placehold.it/400x400&text=Coach Image" />
+                <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" />
               <?php 
               } ?>
               <p class="text-center"><a href="<?php the_permalink(); ?>">Read Full Coach Bio</a></p>

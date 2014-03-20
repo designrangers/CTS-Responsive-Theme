@@ -11,14 +11,15 @@ if( $posts ): ?>
             <div class="coach-image">
               <?php $athleteimage = get_field('athlete_image'); ?>
                 <?php if($athleteimage) { ?>
-                    <img src="<?php echo $athleteimage['url']?>" alt="<?php echo $athleteimage['alt']?>" />
+                    <img src="<?php echo $athleteimage[sizes]['joints-thumb-400']; ?>" alt="<?php echo $athleteimage['alt']; ?>" />
                 <?php } else { ?>
-                  <img src="http://placehold.it/400x400&text=Athlete Image" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" />
                 <?php 
                 } ?>
               <div class="coach-name">
                 <h3><?php the_title(); ?></h3>
                 <p><?php the_field('athlete_residence'); ?></p>
+                <span>Read Athlete Bio</span>
               </div>
             </div>
           </a>

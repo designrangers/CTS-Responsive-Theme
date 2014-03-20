@@ -137,7 +137,7 @@ function joints_scripts_and_styles() {
     wp_register_script( 'twitter-feed-js', get_template_directory_uri() . '/library/js/Tweetie-2.1.1/tweetie.min.js', array('jquery'), '', false);
    
     // register main stylesheet
-    wp_register_style( 'joints-stylesheet', get_template_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+    wp_register_style( 'joints-stylesheet', get_template_directory_uri() . '/library/css/style.css?v1.8', array(), '', 'all' );
     
     // register foundation icons
     wp_register_style( 'foundation-icons', get_template_directory_uri() . '/library/css/icons/foundation-icons.css', array(), '', 'all' );
