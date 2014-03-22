@@ -34,6 +34,7 @@ require_once(get_template_directory().'/library/custom-post-camps.php');
 require_once(get_template_directory().'/library/custom-post-coaches.php');
 require_once(get_template_directory().'/library/custom-post-athletes.php');
 require_once(get_template_directory().'/library/custom-post-bucketlist.php');
+require_once(get_template_directory().'/library/custom-post-specials.php');
 /*
 library/admin.php
 	- removing some default WordPress dashboard widgets

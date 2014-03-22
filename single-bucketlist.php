@@ -132,7 +132,9 @@ single-bookmarks.php
 					<section class="cts-cta section-dark">
 						<div class="row">
 							<div class="medium-12 columns">
-								Call-to-action to get people to invite people to register <a style="margin-left: 40px;" class="cts-button" href="#">Register Now</a>
+								<?php if( get_field('bucketlist_call_to_action' , 'option') ):
+									echo the_field('bucketlist_call_to_action', 'option');
+								endif; ?>
 							</div>
 						</div>
 					</section>

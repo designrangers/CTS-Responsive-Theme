@@ -18,7 +18,7 @@ if( $posts ): ?>
                 } ?>
               <div class="coach-name">
                 <h3><?php the_title(); ?></h3>
-                <p><?php the_field('athlete_residence'); ?></p>
+                <p><?php the_field('athlete_subtitle'); ?></p>
                 <span>Read Athlete Bio</span>
               </div>
             </div>

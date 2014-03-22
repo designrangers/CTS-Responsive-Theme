@@ -721,6 +721,33 @@ a.coachlist {
 	margin-bottom: -30px;
 
 }
+/*************** ATHLETES FEED PAGE ***************/
+body.page-template-page-athletes-php {
+	margin-top: 117px;
+}
+/*************** SPECIALS ***************/
+body.page-template-page-specials-php {
+	margin-top: 117px;
+}
+.cts-special-item {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 11px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+}
+.cts-special-detail + h2 {
+	margin-top: 30px;
+}
+.cts-special-detail {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 11px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+}
+.specials-image {
+	float: right;
+	margin-right: 16px;
+}
 /*************** MEDIA QUERIES ***************/
 @media #{$small-only} { 
 	.header-full {

@@ -102,17 +102,67 @@ single-bookmarks.php
 								<h4>CTS Insight:</h4>
 								<p><?php the_field('camp_insight'); ?></p>
 								<div class="panel">
-									<?php the_field('camp_specials' , 'option'); ?>
+									<h4>Current Specials</h4>
+									<?php
+
+									/*
+									 * WP_Query happy dance
+									 */
+									
+									$args = array(
+										'post_type' => 'specials',
+										'orderby'   => 'menu_order',
+										'tax_query' => array(
+											array(
+												'taxonomy' => 'specials_category',
+												'field' => 'slug',
+												'terms' => 'camps'
+											)
+										)
+									);
+
+									$specialsquery = new WP_Query( $args );
+
+									if ( $specialsquery->have_posts() ) {
+										while ( $specialsquery->have_posts() ) {		
+											$specialsquery->the_post(); ?>
+											
+											<div class="cts-special-item">
+												<h5><?php the_title(); ?></h5>
+												<?php if ( get_field('cts_special_overview') ) {
+													the_field('cts_special_overview'); 
+												}
+												else {
+													the_content();
+												}
+												?>
+												<?php if( get_field('cts_special_expiration') ) {
+													$date = DateTime::createFromFormat('Ymd', get_field('cts_special_expiration'));
+													echo '<span class="alert [round radius] label">Offer Expires: ' . $date->format('F d, Y') . '</span>';
+													}
+												?>
+											</div>
+
+										
+								<?php	}
+									} else {
+										
+										// aww, no posts... do other stuff
+										
+									}
+
+									wp_reset_postdata(); ?>
+									<a class="" href="<?php echo home_url(); ?>/specials">See all specials &raquo;</a>
 								</div>
-
-
 							</div>
 						</div>
 					</section><!-- end article section -->
 					<section class="cts-cta section-dark">
 						<div class="row">
 							<div class="medium-12 columns">
-								Call-to-action to get people to invite people to register <a style="margin-left: 40px;" class="cts-button" href="#">Register Now</a>
+								<?php if( get_field('camps_call_to_action' , 'option') ):
+									echo the_field('camps_call_to_action', 'option');
+								endif; ?>
 							</div>
 						</div>
 					</section>

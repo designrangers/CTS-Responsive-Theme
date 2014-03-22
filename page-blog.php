@@ -1,15 +1,28 @@
+<?php
+/*
+Template Name: Blog Feed
+*/
+?>
+
 <?php get_header(); ?>
 
-	<div class="secondary-hero">
-		<img src="{{ "camps-hero.jpg" | asset_url }}" alt="Carmichael Training Systems">
-		<div class="description">
-			 <h2 class="large">
-	          <span>Latest and Greatest</span><br />
-	          Updates & Blog Posts
-	        </h2>
-	        <a class="cts-button">Call To action</a>
-		</div>
-	</div>
+	<header class="secondary-hero">
+		<?php $image = get_field('cts_hero_image_only'); ?>
+	    <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" />
+	   	<?php if( get_field('cts_hero_alignment_only') == 'text-on-left' ): ?>		
+		    <div class="description heroleft">
+				<?php the_field('cts_hero_text_only'); ?>
+			</div>
+		<?php elseif( get_field('cts_hero_alignment_only') == 'text-on-right' ): ?>
+			 <div class="description heroright">
+				<?php the_field('cts_hero_text_only'); ?>
+			</div>
+		<?php elseif( get_field('cts_hero_alignment_only') == 'text-in-center' ): ?>
+			 <div class="description herocenter">
+				<?php the_field('cts_hero_text_only'); ?>
+			</div>
+		<?php endif; ?>
+	</header> <!-- end article header -->
 	<!--FEATURED POST-->
 	
 	<section class="section-light">
