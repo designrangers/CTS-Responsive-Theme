@@ -20,22 +20,21 @@ single-bookmarks.php
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
 					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-						    <header class="article-header">
-							    <div class="secondary-hero camp-hero">
-									<div class="description">
-										 <h2 class="large">
-										 	<span><?php the_field('bucketlist_location'); ?></span><br />
-								          <?php the_title(); ?>
-								        </h2>
-									</div>
+							<header class="section-light secondary-title camp-hero">
+							    <div class="row infographics-title">
+								    <div class="medium-8 columns">
+								    	<h2><?php the_title(); ?></h2>
+								    </div>
 								</div>
 						    </header> <!-- end article header -->
   					<section class="section-light" itemprop="articleBody">
 						<div class="row">
 							<div class="medium-8 columns">
 								<div class="camp-single-hero">
-									<?php $bucketlist_image = get_field('bucketlist_hero_image'); ?>
-	    							<img src="<?php echo $bucketlist_image['url']?>" alt="<?php echo $bucketlist_image['alt']?>" />
+								<?php $bucketlist_image = get_field('bucketlist_hero_image');
+									if($bucketlist_image) { ?>
+			    							<img src="<?php echo $bucketlist_image[sizes]['cts-camp-hero-637']; ?>" alt="<?php echo $image['alt']; ?>" />
+									<?php } ?>
 								</div>
 								<div class="camp-single-content">
 									<dl class="tabs" data-tab>
@@ -46,11 +45,13 @@ single-bookmarks.php
 									</dl>
 									<div class="tabs-content">
 										<div id="bucketlist_description" class="content active">
+											<h4>Event Description</h4>
 											<?php if( get_field('bucketlist_description') ):
 												the_field('bucketlist_description');
 											endif; ?>
 										</div>
 										<div id="bucketlist_includes" class="content">
+											<h4>Includes</h4>
 											<?php if( get_field('bucketlist_includes') ):
 												the_field('bucketlist_includes');
 											endif; ?>
@@ -60,69 +61,80 @@ single-bookmarks.php
 											<?php if( get_field('bucketlist_videos') ):
 												the_field('bucketlist_videos');
 											endif; ?>
-											<?php 
- 
-												$image_ids = get_field('bucketlist_gallery', false, false);
-												 
-												$shortcode = '
-												 
-												[gallery ids="' . implode(',', $image_ids) . '"]
-												';
-												 
-												echo do_shortcode( $shortcode );
-												 
-											?>
+											<?php if( get_field('bucketlist_photo_gallery') ):
+												the_field('bucketlist_photo_gallery');
+											endif; ?>
 										</div>
-										<div id="bucketlist_testimonials" class="content active">
+										<div id="bucketlist_testimonials" class="content">
+											<h4>Testimonials</h4>
 											<?php if( get_field('bucketlist_testimonials') ):
 												the_field('bucketlist_testimonials');
 											endif; ?>
 										</div>
 									</div>
-								</div>
+									<a class="camp-more-details" href="#event-details">
+										View event details
+									</a>										
+								</div>							
 							</div>
 							<div class="medium-4 columns">
-								<h3>Event Details</h3>
-								<h4>
-									<?php
-										$startdate = DateTime::createFromFormat('Ymd', get_field('bucketlist_start_date'));
-										$enddate = DateTime::createFromFormat('Ymd', get_field('bucketlist_end_date'));
-										echo $startdate->format('F d') . '-' . $enddate->format('d, Y'); 
-									?>
-								</h4>
-								<h4>Price: <?php the_field('bucketlist_price') ?></h4>
-								<a class="cts-button" style="margin-top: 24px;" href="<?php the_field('bucketlist_registration_link'); ?>">Sign up now</a>
-								<h4>CTS Insight:</h4>
-								<p><?php the_field('bucketlist_insight'); ?></p>
+								<div class="camp-single-facts">
+									<h4>
+										<span>Location:</span>
+									</h4>
+									<ul class="bucketlist-location">
+										<?php foreach (get_the_terms($post->ID, 'bucketlist_location') as $cat) : ?>
+										 <li>
+										 	<?php echo $cat->name; ?>
+										 </li>
+										 <?php endforeach; ?>
+									</ul>
+									<h4 class="camp-single-date">
+										<span>Date:</span>
+										<?php
+											$startdate = DateTime::createFromFormat('Ymd', get_field('bucketlist_start_date'));
+											$enddate = DateTime::createFromFormat('Ymd', get_field('bucketlist_end_date'));
+											echo $startdate->format('F d') . '-' . $enddate->format('d, Y'); 
+										?>
+									</h4>
+									<h4>
+										<span>Price:</span>
+										<?php the_field('bucketlist_price') ?>
+									</h4>
+									<h4 class="camp-register">Registration:</h4>
+									<a class="cts-button" href="<?php the_field('bucketlist_registration_link'); ?>">Apply Now</a>
+									<div class="camp-insight">
+										<h4><span>CTS Insight:</span></h4>
+										<p><?php the_field('bucketlist_insight'); ?></p>
+									</div>
+								</div>
 
 
 							</div>
 						</div>
 					</section><!-- end article section -->
+					<section class="cts-cta section-dark">
+						<div class="row">
+							<div class="medium-12 columns">
+								<?php if( get_field('bucketlist_call_to_action' , 'option') ):
+									echo the_field('bucketlist_call_to_action', 'option');
+								endif; ?>
+							</div>
+						</div>
+					</section>
 					<section class="cts-cta section-xtralight">
 						<div class="row">
 							<div class="medium-12 columns">
-								<h2>Registration</h2>
+							<h2><a name="event-details">Event Details</a></h2>
+								<h4>Registration</h4>
 								<?php if( get_field('bucketlist_registration') ):
 									the_field('bucketlist_registration');
 								endif; ?>
-							</div>
-						</div>
-					</section>
-					<section class="cts-cta section-light">
-						<div class="row">
-							<div class="medium-12 columns">
-								<h2>Add-ons</h2>
+								<h4>Add-ons</h4>
 								<?php if( get_field('bucketlist_addons') ):
 									the_field('bucketlist_addons');
 								endif; ?>
-							</div>
-						</div>
-					</section>
-					<section class="cts-cta section-xtralight">
-						<div class="row">
-							<div class="medium-12 columns">
-								<h2>Cancellations</h2>
+								<h4>Cancellations</h4>
 								<?php if( get_field('bucketlist_cancellations') ):
 									the_field('bucketlist_cancellations');
 								endif; ?>

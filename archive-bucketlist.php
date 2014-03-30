@@ -3,7 +3,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 						
 	<header class="secondary-hero">
-		<img src="/wp-content/uploads/2014/02/hero-gray.jpg" alt="">
+		<img src="http://localhost:8888/cts/wp-content/uploads/2014/02/camps-hero.jpg" alt="">
 		<div class="description heroright">
 			<h2 class="large"><span>CTS</span><br>
 	Bucket List</h2>
@@ -21,17 +21,16 @@
     <div class="large-12 columns">
 		<div class="cat">
 			<ul class="inline-list">
-				<li><a href="<?php echo home_url(); ?>/bucket-list-events">All</a>
+				<li class="current-cat"><a href="<?php echo home_url(); ?>/bucket-list/events">All</a></li>
 				<?php
-					$terms = get_terms('bucketlist_type');
-					$count = count($terms);
-	                if($count > 0) {
-	                    foreach ($terms as $term) {
-	                    	echo '<li><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';
-	                    }
-	                }
-	            ?>
-	         </ul>
+					$args = array (
+						'taxonomy' => 'bucketlist_type',
+						'title_li' => ''
+					);
+
+					wp_list_categories($args);
+				?>
+			</ul>
 		</div>
     </div>
   </div>
@@ -39,10 +38,13 @@
 <!--Events loop-->
 <?php 
 /* variable for alternating post styles */
+
+$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 $oddpost = 'section-light';
 $today = date('Ymd');
 $args = array (
 	'post_type' => 'bucketlist',
+	'bucketlist_type'=> $term->slug,
 	'meta_key' => 'bucketlist_start_date',
 	'orderby' => 'meta_value_num',
 	'order' => 'ASC',
@@ -70,18 +72,39 @@ if ( $camps_query->have_posts() ) {
 			    	<a class="cts-button" href="<?php the_permalink(); ?>">More information</a>
 			    </div>
 			    <div class="large-4 medium-4 columns">
-			    	<div class="camp-facts">
-			    		<h4>
-							<?php
-								$startdate = DateTime::createFromFormat('Ymd', get_field('bucketlist_start_date'));
-								$enddate = DateTime::createFromFormat('Ymd', get_field('bucketlist_end_date'));
-								echo $startdate->format('F d') . '-' . $enddate->format('d, Y'); 
-							?>
-						</h4>
-			    		<h4><?php the_field('bucketlist_location'); ?></h4>
+			    		<div class="camp-facts camp-single-facts">
+							<h4>
+								<span>Location:</span>
+							</h4>
+							<ul class="bucketlist-location">
+								<?php foreach (get_the_terms($post->ID, 'bucketlist_location') as $cat) : ?>
+								 <li>
+								 	<?php echo $cat->name; ?>
+								 </li>
+								 <?php endforeach; ?>
+							</ul>							
+							<h4 class="camp-single-date">
+								<span>Date:</span>
+								<?php
+									$startdate = DateTime::createFromFormat('Ymd', get_field('bucketlist_start_date'));
+									$enddate = DateTime::createFromFormat('Ymd', get_field('bucketlist_end_date'));
+									echo $startdate->format('F d') . '-' . $enddate->format('F d, Y'); 
+								?>
+							</h4>
+							<h4 class="camp-single-type">Event Type:</h4>
+							<ul class="camp-types">
+								<?php foreach (get_the_terms($post->ID, 'bucketlist_type') as $cat) : ?>
+								 <li>
+								 	<a href="<?php echo get_term_link($cat->slug, 'bucketlist_type'); ?>">
+								 		<img src="<?php echo z_taxonomy_image_url($cat->term_id); ?>" />
+								 		<span><?php echo $cat->name; ?></span>
+								 	</a>
+								 </li>
+								 <?php endforeach; ?>
+							</ul>
+						</div>
 
 
-			    	</div>
 			    </div>
 			</div>
 		</div>

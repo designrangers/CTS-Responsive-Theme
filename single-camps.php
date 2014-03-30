@@ -20,14 +20,11 @@ single-bookmarks.php
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
 					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-						    <header class="article-header">
-							    <div class="secondary-hero camp-hero">
-									<div class="description">
-										 <h2 class="large">
-										 	<span><?php the_field('cts_camp_location'); ?></span><br />
-								          <?php the_title(); ?>
-								        </h2>
-									</div>
+							<header class="section-light secondary-title camp-hero">
+							    <div class="row infographics-title">
+								    <div class="medium-8 columns">
+								    	<h2><?php the_title(); ?></h2>
+								    </div>
 								</div>
 						    </header> <!-- end article header -->
   					<section class="section-light" itemprop="articleBody">
@@ -38,16 +35,6 @@ single-bookmarks.php
 	    							<img src="<?php echo $campimage['url']?>" alt="<?php echo $image['alt']?>" />
 								</div>
 								<div class="camp-single-content">
-									<div class="row">
-										<div class="large-6 columns">
-											<h5>Mileage</h5>
-											<img src="<?php echo get_template_directory_uri(); ?>/library/images/meter-low.png">
-										</div>
-										<div class="large-6 columns">
-											<h5>Instruction Amount</h5>
-											<img src="<?php echo get_template_directory_uri(); ?>/library/images/meter-mid.png">
-										</div>
-									</div>
 									<dl class="tabs" data-tab>
 									  <dd class="active"><a href="#camp_description">Description</a></dd>
 									  <dd><a href="#camp_location">Location</a></dd>
@@ -56,6 +43,7 @@ single-bookmarks.php
 									</dl>
 									<div class="tabs-content">
 										<div id="camp_description" class="content active">
+											<h4>Camp Description</h4>
 											<?php if( get_field('camp_description') ):
 												the_field('camp_description');
 											endif; ?>
@@ -81,78 +69,142 @@ single-bookmarks.php
 											endif; ?>
 										</div>
 									</div>
+									<a class="camp-more-details" href="#camp-details">
+										View camp details
+									</a>
 								</div>
 							</div>
 							<div class="medium-4 columns">
-								<h3>Camp Details</h3>
-								<h4>
-									<?php
-										$startdate = DateTime::createFromFormat('Ymd', get_field('camp_start_date'));
-										$enddate = DateTime::createFromFormat('Ymd', get_field('camp_end_date'));
-										echo $startdate->format('F d') . '-' . $enddate->format('d, Y'); 
-									?>
-								</h4>
-								<h4>Price: <?php the_field('camp_price') ?></h4>
-								<h5>Camp Type:</h5>
-								<p>
-									<img style="margin-bottom: 15px;" src="<?php echo get_template_directory_uri(); ?>/library/images/icon-climbing.png"><br />
-									<img src="<?php echo get_template_directory_uri(); ?>/library/images/icon-spring.png">
-								</p>
-								<a class="cts-button" style="margin-top: 24px;" href="<?php the_field('camp_registration_link'); ?>">Sign up now</a>
-								<h4>CTS Insight:</h4>
-								<p><?php the_field('camp_insight'); ?></p>
-								<div class="panel">
-									<h4>Current Specials</h4>
-									<?php
-
+								<div class="camp-single-facts">
+									<h4>
+										<span>Location:</span>
+										<?php if( get_field('cts_camp_location') ):
+											echo get_field('cts_camp_location');
+										endif; ?>
+									</h4>
+									<h4 class="camp-single-date">
+										<span>Date:</span>
+										<?php
+											$startdate = DateTime::createFromFormat('Ymd', get_field('camp_start_date'));
+											$enddate = DateTime::createFromFormat('Ymd', get_field('camp_end_date'));
+											echo $startdate->format('F d') . '-' . $enddate->format('d, Y'); 
+										?>
+									</h4>
+									<h4 class="camp-single-price">
+										<span>Price:</span>
+										<?php the_field('camp_price') ?></h4>
+									<!-- Call-to-action -->
+									<h4 class="camp-register">Registration:</h4>	
+									<a class="cts-button" href="<?php the_field('camp_registration_link'); ?>">Book your spot</a>
+									<h4 class="camp-single-type">Camp Type:</h4>
+									<ul class="camp-types">
+										<?php foreach (get_the_terms($post->ID, 'camps_type') as $cat) : ?>
+										 <li>
+										 	<a href="<?php echo get_term_link($cat->slug, 'camps_type'); ?>">
+										 		<img src="<?php echo z_taxonomy_image_url($cat->term_id); ?>" />
+										 		<span><?php echo $cat->name; ?></span>
+										 	</a>
+										 </li>
+										 <?php endforeach; ?>
+									</ul>
+									<?php 
 									/*
-									 * WP_Query happy dance
-									 */
-									
-									$args = array(
-										'post_type' => 'specials',
-										'orderby'   => 'menu_order',
-										'tax_query' => array(
-											array(
-												'taxonomy' => 'specials_category',
-												'field' => 'slug',
-												'terms' => 'camps'
+									// Camp Intensity
+									<h4>
+										<span>Intensity Level:</span>
+									</h4>
+									<?php if( get_field('camp_intensity') == 'Extra-Light' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-1.png" alt="Extra-Light" />
+									<?php elseif( get_field('camp_intensity') == 'Light' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-2.png" alt="Light" />
+									<?php elseif( get_field('camp_intensity') == 'Medium' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-3.png" alt="Medium" />
+									<?php elseif( get_field('camp_intensity') == 'Hard' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-4.png" alt="Hard" />
+									<?php elseif( get_field('camp_intensity') == 'Intense' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-5.png" alt="Intense" />	
+									<? endif ?>
+									*/
+									?>
+									<h4>
+										<span>Mileage:</span>
+									</h4>
+									<?php if( get_field('camp_mileage') == 'Extra-Short' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-1.png" alt="Extra-Short" />
+									<?php elseif( get_field('camp_mileage') == 'Short' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-2.png" alt="Short" />
+									<?php elseif( get_field('camp_mileage') == 'Medium' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-3.png" alt="Medium" />
+									<?php elseif( get_field('camp_mileage') == 'Long' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-4.png" alt="Long" />
+									<?php elseif( get_field('camp_mileage') == 'Endurance' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-5.png" alt="Endurance" />	
+									<? endif ?>
+									</h4>
+									<h4>
+										<span>Amount of Instruction:</span>
+									</h4>
+									<?php if( get_field('camp_instruction') == 'Low' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-1.png" alt="Low" />
+									<?php elseif( get_field('camp_instruction') == 'Medium' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-3.png" alt="Medium" />
+									<?php elseif( get_field('camp_instruction') == 'High' ): ?>
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/level-5.png" alt="High" />	
+									<? endif ?>
+									<div class="camp-insight">
+										<h4><span>CTS Insight:</span></h4>
+										<p><?php the_field('camp_insight'); ?></p>
+									</div>
+									<div class="camp-specials">
+										<h4><span>Current Specials:</span></h4>
+										<?php
+
+										/*
+										 * WP_Query happy dance
+										 */
+										
+										$args = array(
+											'post_type' => 'specials',
+											'orderby'   => 'menu_order',
+											'tax_query' => array(
+												array(
+													'taxonomy' => 'specials_category',
+													'field' => 'slug',
+													'terms' => 'camps'
+												)
 											)
-										)
-									);
+										);
 
-									$specialsquery = new WP_Query( $args );
+										$specialsquery = new WP_Query( $args );
 
-									if ( $specialsquery->have_posts() ) {
-										while ( $specialsquery->have_posts() ) {		
-											$specialsquery->the_post(); ?>
-											
-											<div class="cts-special-item">
-												<h5><?php the_title(); ?></h5>
-												<?php if ( get_field('cts_special_overview') ) {
-													the_field('cts_special_overview'); 
-												}
-												else {
-													the_content();
-												}
-												?>
-												<?php if( get_field('cts_special_expiration') ) {
-													$date = DateTime::createFromFormat('Ymd', get_field('cts_special_expiration'));
-													echo '<span class="alert [round radius] label">Offer Expires: ' . $date->format('F d, Y') . '</span>';
+										if ( $specialsquery->have_posts() ) {
+											while ( $specialsquery->have_posts() ) {		
+												$specialsquery->the_post(); ?>
+												
+												<div class="cts-special-item">
+													<h5><?php the_title(); ?></h5>
+													<?php if ( get_field('cts_special_overview') ) {
+														the_field('cts_special_overview'); 
 													}
-												?>
-											</div>
+													else {
+														the_content();
+													}
+													?>
+													<?php if( get_field('cts_special_expiration') ) {
+														$date = DateTime::createFromFormat('Ymd', get_field('cts_special_expiration'));
+														echo '<span class="alert [round radius] label">Offer Expires: ' . $date->format('F d, Y') . '</span>';
+														}
+													?>
+												</div>
+									<?php	}
+										} else {
+											
+											// aww, no posts... do other stuff
+											
+										}
 
-										
-								<?php	}
-									} else {
-										
-										// aww, no posts... do other stuff
-										
-									}
-
-									wp_reset_postdata(); ?>
-									<a class="" href="<?php echo home_url(); ?>/specials">See all specials &raquo;</a>
+										wp_reset_postdata(); ?>
+									</div>																
 								</div>
 							</div>
 						</div>
@@ -166,18 +218,18 @@ single-bookmarks.php
 							</div>
 						</div>
 					</section>
-					<section class="camp-secondary-info section-xtralight">
+					<section class="camp-secondary-info section-light">
 						<div class="row">
 							<div class="medium-12 columns">
-								<h2>Camp Details</h2>
+								<h2><a name="camp-details">Camp Details</a></h2>
 									<div class="camp-single-content">
 										<dl class="tabs camp-detail-tabs" data-tab>
-										  <dd class="active"><a href="#camp_registration">Registration/Cancellation</a></dd>
-										  <dd><a href="#camp_arrival">Arrival/Departure</a></dd>
-										  <dd><a href="#camp_biketransport">Bike Transport</a></dd>
-										  <dd><a href="#camp_lodging">Lodging</a></dd>
-										  <dd><a href="#camp_airport">Airport</a></dd>
-										  <dd><a href="#camps_what_to_bring">What to Bring</a></dd>
+										  <dd class="active"><a href="#camp_registration">Registration &amp;<br>Cancellation</a></dd>
+										  <dd><a href="#camp_arrival">Arrival &amp;<br>Departure</a></dd>
+										  <dd><a href="#camp_biketransport">Bike <br>Transport</a></dd>
+										  <dd><a href="#camp_lodging">Local <br>Lodging</a></dd>
+										  <dd><a href="#camp_airport">Local <br>Airports</a></dd>
+										  <dd><a href="#camps_what_to_bring">What <br>to Bring</a></dd>
 										</dl>
 										<div class="tabs-content">
 											<div id="camp_registration" class="content active">
@@ -226,9 +278,11 @@ single-bookmarks.php
 											</div>
 											<div id="camp_airport" class="content">
 												<h4>Airport</h4>
-												<?php if( get_field('camp_airport') ):
+												<p>
+													<?php if( get_field('camp_airport') ):
 													the_field('camp_airport');
 												endif; ?>
+												</p>
 											</div>
 											<div id="camps_what_to_bring" class="content">
 												<h4>What to Bring</h4>
@@ -237,6 +291,9 @@ single-bookmarks.php
 												endif; ?>
 											</div>
 										</div>
+										<a class="camp-more-details" href="<?php the_field('camp_registration_link'); ?>">
+											Register for this camp &raquo;
+										</a>
 									</div>
 								</div>
 							</div>

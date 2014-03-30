@@ -68,20 +68,16 @@ jQuery(document).ready(function($) {
 	// add all your scripts here
     
     // Smooth Scrolling for anchor links
-    $(function() {
-      $('a[href*=#expert]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top - 117
-            }, 1000);
-            return false;
-          }
-        }
-      });
-    });
+    $('a[href=#camp-details]').
+        click(function(){
+            var target = $('a[name=camp-details]');
+            if (target.length)
+            {
+                var top = target.offset().top - 150;
+                $('html,body').animate({scrollTop: top}, 1000);
+                return false;
+            }
+        });
     
  
 }); /* end of as page load scripts */

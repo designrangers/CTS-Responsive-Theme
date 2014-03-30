@@ -231,6 +231,30 @@ footer {
 		opacity: 0.8;
 	}
 }
+.section-bright-cta {
+	background: $secondary-color;
+}
+.section-bright-cta {
+	a {
+		font-family: $heading-font-family;
+		display: block;
+		background: $secondary-color;
+		color: #fff;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	a:hover {
+		background: #1673bb;
+			-webkit-transition: background .5s ease;
+		-moz-transition: background .5s ease;
+		-ms-transition: background .5s ease;
+		-o-transition: background .5s ease;
+		transition: background .5s ease;
+
+	}
+}
 /*************** TYPOGRAPHY ***************/
 h1, h2, h3, h4, h5 {
 	font-family: "Montserrat", sans-serif;
@@ -257,6 +281,38 @@ h5 {
 	color: #726c6a;
 }
 
+/*************** SPECIAL LINK STYLES ***************/
+a:hover {
+	-webkit-transition: color .5s ease;
+	-moz-transition: color .5s ease;
+	-ms-transition: color .5s ease;
+	-o-transition: color .5s ease;
+	transition: color .5s ease;
+}
+a.arrowlink {
+	font-weight: 700;
+	padding-left: 10px;
+}
+a.arrowlink::after {
+	margin-left: 10px;
+	content: '»';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+a.arrowlink::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+a.arrowlink:hover::after, a.arrowlink:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}
 /*************** IMAGES ***************/
 .hug-bottom {
 	margin-bottom: -48px;
@@ -394,9 +450,6 @@ h5 {
 	margin-top: 7px;
 	margin-bottom: 0;
 }
-.cts-coaches p a {
-	color:  $secondary-color;
-}
 .coach-image {
 	position: relative;
 }
@@ -472,43 +525,14 @@ transition: all .25s ease;
 }
 // Homepage Twitter Feed
 
-.section-twitterfeed {
-	background-color: #fff;
+.home-twitter {
 	text-align: center;
-	padding-top: 29px;
-	padding-bottom: 29px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
-.section-twitterfeed {
-	a {
-		color: #333333;
-	}
-	a:hover {
-		opacity: 0.8;
-	}
-}
-.cts-hometweets h3 {
-	margin-bottom: 26px;
-}
-
-.cts-hometweets .tweet {
-	overflow: hidden;
-}
-
-.cts-hometweets ul {
-	list-style-type: none;
-    width: 99999px;
-    height: 100px;
-    margin: 0;
-    padding: 0;
-}
-
-.cts-hometweets ul li {
-    width: 480px;
-    height: 100px;
-    float: left;
-    border-right: 1px solid #333333;
-    padding: 0 10px 0 0;
-    margin: 0 10px 0 0;
+.rtw_main {
+	font-size: 18px;
 }
 /*************** SECONDARY PAGES ***************/
 body.secondary {
@@ -553,6 +577,9 @@ body.secondary {
 .secondary-title .row {
 	text-align: center;
 	padding-bottom: 0;
+}
+.secondary-title-only {
+	text-align: center;
 }
 .tight {padding: 0;}
 .alternate-hero {
@@ -619,43 +646,60 @@ body.secondary {
 	min-height: 200px;
 	padding-left: 29px;
 }
-.camp-facts h4 {
-	line-height: 37px;
-}
-h4.camp-date {
-	font-size: 48px;
-	line-height: 48px;
-	font-weight: 700;
-}
 .camp-categories {
 	background-color: #8aa79e;
 	color: #fff;
 	font-size: 18px;
 	text-align: center;
-	padding-top: 29px;
-	padding-bottom: 29px;
+	text-transform: uppercase;
 }
 .camp-categories {
 	.inline-list {
-		margin-bottom: 0;
+		margin: 0;
+		overflow: visible;
+	}
+	.inline-list > li {
+		margin: 0;
+	}
+	:last-child > a {
+		border-right: 1px solid #fff;
 	}
 	a {
+		background: #8aa79e;
+		display: block;
 		color: #fff;
 		font-family: $heading-font-family;
-		font-size: 18px;
-		padding-left: 11px;
-		padding-right: 11px;
-		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 16px;
+		padding: 17px 18px 17px 18px;
+		border-left: 1px solid #fff;
 	}
 	a:hover {
-		opacity: 0.8;
+		background: #a0b4aa;
+	}
+	.current-cat > a, .current-cat > a:hover {
+		background: #699184;
+		position: relative;
+	}
+	.current-cat > a:after {
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(255, 255, 255, 0);
+		border-top-color: #699184;
+		border-width: 11px;
+		margin-left: -11px;
 	}
 }
 /*************** CAMP SINGLE PAGES ***************/
 .camp-hero {
-	height: 250px;
-	background: url('../images/camps-header.jpg') no-repeat top center;
-	background-size: cover;
+	height: auto;
+	margin-top: 117px;
 }
 .camp-hero {
 	date {
@@ -671,23 +715,190 @@ h4.camp-date {
 }
 .camp-single-content, .coach-single-content {
 	background-color: #fff;
-	padding: 30px;
+	border-top: 1px solid #fff;
+	padding: 0 30px 30px 30px;
+	position: relative;
 	min-height: 800px;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
 }
 .camp-single-content .row {
 	padding-top: 0;
 }
+.camp-single-facts, .coach-single-facts  {
+	h4 span, h4.camp-single-type, h4.camp-register {
+		color: #4a4240;
+		display: block;
+		font-size: 13px;
+		margin-bottom: 0;
+		text-transform: uppercase;
+	}
+	h4 {
+		color: #1673bb;
+		font-size: 18px;
+		margin-bottom: 11px;
+		text-transform: none;
+	}	
+}
+.coach-single-facts {
+	ul {
+		font-family: $heading-font-family;
+		margin-top: -11px;
+		margin-left: 0;
+		margin-bottom: 11px;
+		list-style-type: none;
+
+	}
+	ul li {
+		color: #1673bb;
+		font-size: 16px;
+	}
+}
+ul.camp-types, ul.bucketlist-location {
+	font-family: $heading-font-family;
+	font-size: 18px;
+	list-style-type: none;
+	margin-left: 0;
+	margin-bottom: 0;
+}
+ul.camp-types {
+	li a {
+		clear: both;
+		display: block;
+		color: #1673bb;
+		line-height: 60px;
+		margin-bottom: 7px;
+		text-shadow: none;	
+	}
+	li a img {
+		float: left;
+	}
+	li a span {
+		margin-left: 7px;
+	}
+}
 #camp_lodging, #camp_itinerary {
 	width: 100%;
 }
-.tabs.camp-detail-tabs dd > a {
-	font-size: 14px;
-	padding-left: 15px;
-	padding-right: 15px;
+.camp-insight {
+	color: #1673bb;
+	margin-top: 30px;
 }
-/*************** COACHES FEED PAGE ***************/
-body.page-template-page-coaches-php {
+.camp-single-facts .cts-button {
+	margin-top: 11px;
+}
+.camp-specials {
+	margin-top: 30px;
+}
+.camp-single-facts .cts-special-item {
+		margin-bottom: 7px;
+		padding-bottom: 7px;
+}
+.cts-special-item {
+	h5 {
+		color: $secondary-color;
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 0;
+		text-transform: none;
+	}
+}
+a.camp-more-details {
+	font-family: $heading-font-family;
+	display: block;
+	background: $secondary-color;
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+	margin-left: -30px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+}
+a.camp-more-details:hover {
+	background: #1673bb;
+		-webkit-transition: background .5s ease;
+	-moz-transition: background .5s ease;
+	-ms-transition: background .5s ease;
+	-o-transition: background .5s ease;
+	transition: background .5s ease;
+
+}
+.camp-secondary-info .camp-single-content {
+	min-height: 400px;
+}
+/*************** CAMP AND BUCKET-LIST SHARED STYLES ***************/
+.camp-single-content .tabs {
+	margin-left: -30px;
+	margin-right: -30px;
+	text-align: center;
+	text-transform: uppercase; 
+}
+.camp-single-content .tabs dd {
+	width: 25%;
+}
+.tabs dd > a {
+	background: #8aa79e;
+	color: #fff;
+	font-family: $heading-font-family;
+	font-weight: 400;
+	font-size: 16px;
+	padding-left: 0;
+	padding-right: 0;
+	border-left: 1px solid #fff;
+}
+.tabs dd:first-child a {
+	border-left: none;
+}
+.tabs dd.active > a, .tabs dd.active > a:hover {
+	background: #699184;
+	position: relative;
+}
+.tabs dd.active > a:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #699184;
+	border-width: 11px;
+	margin-left: -11px;
+}
+.tabs dd > a:hover {
+	background: #a0b4aa;
+}
+.tabs-content {
+	padding-top: 29px;
+}
+.camp-secondary-info .camp-single-content .tabs dd {
+	width: 16.66666666666667%;
+}
+.camp-secondary-info .camp-single-content .tabs dd > a {
+	font-size: 14px;
+	line-height: 18px;
+}
+.cts-cta {
+	font-family: $heading-font-family;
+	font-size: 29px;
+}
+/*************** SPECIAL BODY CLASSES ***************/
+body.page-template-page-coaches-php, body.tax-camps_type, body.tax-bucketlist_type, body.page-template-page-blog-php {
 	margin-top: 117px;
+}
+/*************** BUCKET LIST PAGES ***************/
+ul.bucketlist-location {
+	color: #1673bb;
+	margin-top: -11px;
+	margin-bottom: 11px;
+}
+#bucketlist_gallery {
+	width: 100%
 }
 /*************** COACH SINGLE PAGES ***************/
 body.single-coaches {
@@ -701,7 +912,17 @@ body.single-coaches {
 .coach-single-hero {
 	float: left;
 	max-width: 230px;
-	margin-right: 18px;
+	margin-right: 26px;
+	border: 1px solid #bec2c7;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+.coach-single-hero img {
+	border: 7px solid #fff;
+}
+.coach-single-content {
+	padding-top: 30px;
+	padding-bottom: 78px;
 }
 .coach-single-content {
 	h2 {
@@ -729,11 +950,13 @@ body.page-template-page-athletes-php {
 body.page-template-page-specials-php {
 	margin-top: 117px;
 }
-.cts-special-item {
-	border-bottom: 1px solid #ccc;
-	margin-bottom: 11px;
-	padding-top: 11px;
-	padding-bottom: 11px;
+body.page-template-page-specials-php {
+	.cts-special-item {
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 11px;
+		padding-top: 11px;
+		padding-bottom: 11px;
+	}
 }
 .cts-special-detail + h2 {
 	margin-top: 30px;
@@ -747,6 +970,38 @@ body.page-template-page-specials-php {
 .specials-image {
 	float: right;
 	margin-right: 16px;
+}
+/*************** BLOG PAGES ***************/
+.blog-meta {
+	border-top: 1px solid #bec2c7;
+	padding-top: 18px;
+}
+.blog-meta  {
+	h4 span {
+		color: #4a4240;
+		display: block;
+		font-size: 13px;
+		margin-bottom: 0;
+		text-transform: uppercase;
+	}
+	h4 {
+		color: #1673bb;
+		font-size: 18px;
+		float: left;
+		margin-left: 30px;
+		text-transform: none;
+	}	
+	ul {
+		font-family: $heading-font-family;
+		margin-left: 0;
+		margin-bottom: 11px;
+		list-style-type: none;
+
+	}
+	ul li {
+		color: #1673bb;
+		font-size: 16px;
+	}
 }
 /*************** MEDIA QUERIES ***************/
 @media #{$small-only} { 

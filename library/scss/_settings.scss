@@ -58,7 +58,7 @@ $heading-font-style: normal;
 // We use these as default colors throughout
 $primary-color: #0a3253;
 $secondary-color: #cb1e41;
-// $alert-color: #f04124;
+$alert-color: #cb1e41;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
@@ -138,7 +138,7 @@ $secondary-color: #cb1e41;
 
 // We use these to control text style.
 // $alert-font-weight: normal;
-// $alert-font-size: rem-calc(13);
+$alert-font-size: 11px;
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
 
@@ -1135,8 +1135,8 @@ $orbit-nav-arrow-color-hover: #fff;
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: darken($primary-color, 5%);
+$anchor-font-color: $secondary-color;
+$anchor-font-color-hover: #3a82b6;
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;

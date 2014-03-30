@@ -61,16 +61,6 @@ Template Name: Homepage
         </div>
       </div>
     </div><!-- end infographics -->
-    <!-- Call-to-action -->
-    <div class="section-twitterfeed">
-      <div class="row">
-        <div class="large-12 columns cts-hometweets">
-          <h3>Updates and Accomplishments</h3>
-          <div class="tweet">
-          </div>
-        </div>
-      </div>
-    </div><!-- end call-to-action -->
     <?php get_template_part( 'partials/cts', 'flexible-content' ); ?>
     <!-- CTS Coaches -->
     <div class="section-light cts-coaches">
@@ -121,22 +111,5 @@ Template Name: Homepage
 				</div> <!-- end #inner-content -->
     
 			</div> <!-- end #content -->
-      <script class="source" type="text/javascript">
-         $('.cts-hometweets .tweet').twittie({
-          username: 'trainright',
-          dateFormat: '%b. %d, %Y',
-          template: '<strong class="date">{{date}}</strong><br />{{tweet}}',
-          apiPath: '/wp-content/themes/cts/library/js/Tweetie-2.1.1/api/tweet.php',
-          count: 10
-      });
-
-      setInterval(function() {
-          var item = $('.cts-hometweets .tweet ul').find('li:first');
-
-          item.animate( {marginLeft: '-480px', 'opacity': '0'}, 500, function() {
-              $(this).detach().appendTo('.cts-hometweets .tweet ul').removeAttr('style');
-          });
-      }, 8000);
-      </script>
 
 <?php get_footer(); ?>

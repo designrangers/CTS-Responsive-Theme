@@ -66,6 +66,7 @@ THUMNAIL SIZE OPTIONS
 add_image_size( 'joints-thumb-600', 600, 150, true );
 add_image_size( 'joints-thumb-300', 300, 100, true );
 add_image_size( 'joints-thumb-400', 400, 400, true );
+add_image_size( 'cts-camp-hero-637', 637, 350, true );
 /*
 to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
