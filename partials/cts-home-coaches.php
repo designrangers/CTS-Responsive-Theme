@@ -13,7 +13,7 @@ if( $posts ): ?>
                 <?php if($coachheadshot) { ?>
                     <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400']; ?>" alt="<?php echo $coachheadshot['alt']; ?>" />
                 <?php } else { ?>
-                  <img src="http://placehold.it/400x400&text=Coach Image" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" />
                 <?php 
                 } ?>
               <div class="coach-name">
@@ -27,18 +27,18 @@ if( $posts ): ?>
         <div id="<?php the_ID(); ?>" class="reveal-modal" data-reveal>
           <div class="row">
             <div class="medium-4 columns">
-              <?php $coachimage = get_field('coach_and_athlete'); ?>
-              <?php if($coachimage) { ?>
-                  <img src="<?php echo $coachimage['url']?>" alt="<?php echo $coachimage['alt']?>" />
-              <?php } else { ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" />
-              <?php 
-              } ?>
-              <p class="text-center"><a href="<?php the_permalink(); ?>">Read Full Coach Bio</a></p>
+              <?php $coachheadshot = get_field('coach_headshot'); ?>
+                <?php if($coachheadshot) { ?>
+                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $coachheadshot['alt'];?>" />
+                <?php } else { ?>
+                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
+                <?php 
+                } ?>
             </div>
             <div class="medium-8 columns">    
               <h2><?php the_title(); ?></h2>
               <p><?php the_field('coaches_summary'); ?></p>
+              <p><a class="arrowlink" style="padding-left: 0;" href="<?php the_permalink(); ?>">Read Full Coach Bio</a></p>
             </div>
           </div>
             <a class="close-reveal-modal">&#215;</a>

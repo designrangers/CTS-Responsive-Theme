@@ -57,14 +57,32 @@ Template Name: Athletes Template
 				            </div>
 				          </a>
 				        </li>
-				       <div id="<?php the_ID(); ?>" class="reveal-modal" data-reveal>
+				        <div id="<?php the_ID(); ?>" class="reveal-modal" data-reveal>
 				          <div class="row">
-				            <div class="medium-12 columns">    
-				              <h2><?php the_title(); ?></h2>
-				              <p><?php the_field('athlete_accomplishments'); ?></p>
+				            <div class="medium-4 columns">  
+				              <?php $althleteheadshot = get_field('althlete_headshot'); ?>
+				              <?php if($althleteheadshot) { ?>
+				                  <img src="<?php echo $althleteheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $althleteheadshot['alt'];?>" />
+				              <?php } else { ?>
+				                <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
+				              <?php 
+				              } ?> 
 				            </div>
-				          </div>
-				            <a class="close-reveal-modal">&#215;</a>
+					        <div class="medium-8 columns">
+					        	<h2><?php the_title(); ?></h2>
+					        	<div class="row reveal-athlete">
+						            <div class="medium-6 columns"> 
+						              <h4>Stats:</h4>
+						              <?php the_field('athlete_bio'); ?>
+						            </div>
+									<div class="medium-6 columns">				            
+						            	<h4>Accomplishments</h4>
+						              	<?php the_field('athlete_accomplishments'); ?>
+						            </div>
+					          	</div>
+					        </div>
+					            <a class="close-reveal-modal">&#215;</a>
+				           </div>
 				        </div>
 				    
 				<?php	

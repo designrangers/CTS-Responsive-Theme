@@ -5,7 +5,6 @@ Template Name: Blog Feed
 ?>
 
 <?php get_header(); ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 	<header class="section-light secondary-title-only">
 	      <div class="row infographics-title">
 		    <div class="medium-12 columns">
@@ -15,32 +14,36 @@ Template Name: Blog Feed
 		</div>
 	</header>	
 	<!--FEATURED POST-->
-	
-	<section class="section-light">
+<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+	<section class="blog-featured-row">
 		<div class="row">
-			<div class="large-12 columns">
-				<?php 
-					$sticky = get_option( 'sticky_posts' );
-					$args = array(
-						'posts_per_page' => 1,
-						'post__in'  => $sticky,
-					);
-					$query1 = new WP_Query( $args );
-					if ( $query1->have_posts() ) { while ( $query1->have_posts() ) { $query1->the_post(); ?>
-						<?php the_post_thumbnail();?>
-						<div class="content">
-							<h2><a title="<?php the_title();?>" href="<?php the_permalink();?>"><?php the_title();?></a></h2>
-							<p class="links"><a title="<?php the_title();?>" href="<?php the_permalink();?>">Read More</a></p>
-						</div>
+			<?php 
+				$sticky = get_option( 'sticky_posts' );
+				$args = array(
+					'post__in'  => $sticky,
+					'ignore_sticky_posts' => 1,
+					'orderby' => date,
+					'posts_per_page' => 1					
+				);
+				$query1 = new WP_Query( $args );
+				if ( $query1->have_posts() ) { while ( $query1->have_posts() ) { $query1->the_post(); ?>			
+			<div class="large-8 medium-8 columns">
+				<?php the_post_thumbnail('cts-camp-hero-637');?>
+			</div>
+			<div class="medium-4 columns">
+				<div class="blog-featured-content">
+					<h4><span>Featured Article:</span></h4>
+					<h2><?php the_title();?></a></h2>
+					<a class="cts-button" title="<?php the_title();?>" href="<?php the_permalink();?>">Read More</a>
+				</div>
 				<?php } } wp_reset_postdata(); ?>
 			</div>
 		</div>
 	</section>
-	<div class="section-xtralight">
+</article>
+	<div class="section-light">
 		<div class="row blog-feed">
 			<div class="large-8 columns">
-				<div class="row">
-					<div class="large-12 columns">
 						<!--Blog loop-->
 						<?php 
 						/* variable for alternating post styles */
@@ -49,7 +52,7 @@ Template Name: Blog Feed
 						$args = array (
 							'post' => 'posts',
 							'order' => 'DESC',
-							'posts_per_page'=> 3,
+							'posts_per_page'=> 10,
 							'paged' => $paged,
 							'post__not_in' => $sticky
 						);
@@ -60,30 +63,26 @@ Template Name: Blog Feed
 							while ( $wp_query->have_posts() ) {
 								$wp_query->the_post();
 						?>
-							
-							  	<div class="">
-								  	<div class="row">
-									  	<div class="large-12 medium-12 columns">
-									  		<h3><?php the_title(); ?></h3>
-									    	<p><?php the_excerpt(); ?></p>
-									    	<a class="cts-button" href="<?php the_permalink(); ?>">Read the full article</a>
-								    		<div class="blog-meta">
-												<h4>
-													<span>Posted:</span>
-													<?php the_date( 'F j, Y'); ?> 
-												</h4>
-												<h4>
-													<span>Author:</span>
-													<?php the_author(); ?> 
-												</h4>
-												<h4>
-													<span>Categories:</span>
-													<?php the_category(''); ?> 
-												</h4>																										
-											</div>									    	
-									    </div>
-									</div>
-								</div>
+						<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+							<section class="blog-posts">
+							  		<h3><?php the_title(); ?></h3>
+							    	<?php the_excerpt(); ?>
+							    	<a class="cts-button" href="<?php the_permalink(); ?>">Read the full article</a>
+							</section>
+							<footer class="article-footer blog-meta">
+								<h4>
+									<span>Posted: <?php the_date( 'F j, Y'); ?></span>
+								</h4>
+								<h4>
+									<span>Author: <?php the_author(); ?></span>
+									
+								</h4>
+								<h4 class="categories">
+									<span>Categories: <?php the_category(', '); ?></span>
+									 
+								</h4>																										
+							</footer>									    	
+						</article>
 
 						<?php	
 							}
@@ -103,16 +102,10 @@ Template Name: Blog Feed
 						<?php
 						/* Restore original Post Data */
 						wp_reset_postdata(); ?>
-
-
-
-					</div>
-				</div>
-			</div>
+			</div><!-- end 8-columns -->
 				<?php get_sidebar(); ?>
-		</div> <!-- end .blog-feed -->
-	</div>
-</article>
+		</div><!-- end .blog-feed -->
+	</div><!-- end .section-light -->
 
 		    
 

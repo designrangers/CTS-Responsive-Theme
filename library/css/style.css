@@ -6196,7 +6196,7 @@ h1.logo {
   display: inline-block;
   margin: 10px; }
 
-footer {
+.cts-footer {
   background-color: #151e27;
   padding-top: 48px;
   padding-bottom: 48px; }
@@ -6813,13 +6813,13 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
 .camp-single-content .row {
   padding-top: 0; }
 
-.camp-single-facts h4 span, .camp-single-facts h4.camp-single-type, .camp-single-facts h4.camp-register, .coach-single-facts h4 span, .coach-single-facts h4.camp-single-type, .coach-single-facts h4.camp-register {
+.camp-single-facts h4 span, .camp-single-facts h4.camp-single-type, .camp-single-facts h4.camp-register, .coach-single-facts h4 span, .coach-single-facts h4.camp-single-type, .coach-single-facts h4.camp-register, .blog-featured-content h4 span, .blog-featured-content h4.camp-single-type, .blog-featured-content h4.camp-register {
   color: #4a4240;
   display: block;
   font-size: 13px;
   margin-bottom: 0;
   text-transform: uppercase; }
-.camp-single-facts h4, .coach-single-facts h4 {
+.camp-single-facts h4, .coach-single-facts h4, .blog-featured-content h4 {
   color: #1673bb;
   font-size: 18px;
   margin-bottom: 11px;
@@ -6962,7 +6962,7 @@ a.camp-more-details:hover {
   font-size: 29px; }
 
 /*************** SPECIAL BODY CLASSES ***************/
-body.page-template-page-coaches-php, body.tax-camps_type, body.tax-bucketlist_type, body.page-template-page-blog-php {
+body.page-template-page-coaches-php, body.tax-camps_type, body.tax-bucketlist_type, body.page-template-page-blog-php, body.single-post, body.archive.category {
   margin-top: 117px; }
 
 /*************** BUCKET LIST PAGES ***************/
@@ -7015,6 +7015,11 @@ a.coachlist {
 body.page-template-page-athletes-php {
   margin-top: 117px; }
 
+.reveal-athlete h4 {
+  color: #4a4240;
+  font-size: 13px;
+  margin-bottom: 0; }
+
 /*************** SPECIALS ***************/
 body.page-template-page-specials-php {
   margin-top: 117px; }
@@ -7039,30 +7044,74 @@ body.page-template-page-specials-php .cts-special-item {
   margin-right: 16px; }
 
 /*************** BLOG PAGES ***************/
+.blog-featured-row {
+  background-color: #0a3253; }
+
+.blog-featured-content {
+  color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.blog-featured-content h2 {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-transform: none; }
+.blog-featured-content h4 span {
+  color: #fff;
+  opacity: 0.8; }
+
+.blog-feed article, .cts-blog-archive article {
+  padding-top: 0;
+  padding-bottom: 30px;
+  padding-right: 30px; }
+
+.cts-blog-archive article {
+  border-bottom: 1px solid #bec2c7;
+  padding-top: 30px; }
+
 .blog-meta {
   border-top: 1px solid #bec2c7;
-  padding-top: 18px; }
+  border-bottom: 1px solid #bec2c7;
+  padding: 11px 0 9px 0; }
 
-.blog-meta h4 span {
-  color: #4a4240;
-  display: block;
-  font-size: 13px;
-  margin-bottom: 0;
-  text-transform: uppercase; }
-.blog-meta h4 {
-  color: #1673bb;
-  font-size: 18px;
-  float: left;
-  margin-left: 30px;
-  text-transform: none; }
-.blog-meta ul {
-  font-family: Montserrat, sans-serif;
-  margin-left: 0;
-  margin-bottom: 11px;
-  list-style-type: none; }
-.blog-meta ul li {
-  color: #1673bb;
+.blog-meta {
   font-size: 16px; }
+  .blog-meta h4 span {
+    color: #4a4240;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 0;
+    text-transform: uppercase; }
+  .blog-meta h4 {
+    color: #1673bb;
+    font-size: 18px;
+    float: left;
+    margin-right: 30px;
+    text-transform: none; }
+  .blog-meta h4.categories {
+    float: none;
+    clear: both;
+    margin-right: 0; }
+
+.cts-blog-single, .cts-blog-archive {
+  padding-top: 48px;
+  padding-right: 30px; }
+
+.cts-blog-single h1, .archive h1 {
+  color: #0a3253;
+  font-size: 39px;
+  letter-spacing: normal;
+  text-transform: none; }
+
+/*************** SIDEBAR ***************/
+.sidebar {
+  background: url("../images/sidebar-bkd.png") repeat-y left top;
+  border-left: 1px solid #ccc;
+  margin-top: -48px;
+  padding-top: 48px;
+  padding-bottom: 48px; }
 
 /*************** MEDIA QUERIES ***************/
 @media only screen and (max-width: 40em) {
