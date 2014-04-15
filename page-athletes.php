@@ -47,7 +47,7 @@ Template Name: Athletes Template
 				                <?php } else { ?>
 				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
 				                <?php 
-				                } ?>
+				               } ?>
 				              <div class="coach-name">
 				                <h3><?php the_title(); ?></h3>
 				                <p><?php the_field('athlete_subtitle'); ?></p>
@@ -60,13 +60,13 @@ Template Name: Athletes Template
 				        <div id="<?php the_ID(); ?>" class="reveal-modal" data-reveal>
 				          <div class="row">
 				            <div class="medium-4 columns">  
-				              <?php $althleteheadshot = get_field('althlete_headshot'); ?>
-				              <?php if($althleteheadshot) { ?>
-				                  <img src="<?php echo $althleteheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $althleteheadshot['alt'];?>" />
-				              <?php } else { ?>
-				                <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
-				              <?php 
-				              } ?> 
+				              <?php $athleteheadshot = get_field('athlete_image'); ?>
+				                <?php if($athleteheadshot) { ?>
+				                    <img src="<?php echo $athleteheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $athleteheadshot['alt'];?>" />
+				                <?php } else { ?>
+				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
+				                <?php 
+				               } ?>
 				            </div>
 					        <div class="medium-8 columns">
 					        	<h2><?php the_title(); ?></h2>

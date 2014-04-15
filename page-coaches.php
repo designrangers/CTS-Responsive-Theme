@@ -24,11 +24,11 @@ Template Name: Coaches Template
 			  <div class="row">
 			    <div class="large-12 columns">
 					<div class="cat">
-						<ul class="inline-list">
-							<li><a href="#pro">Pro</a></li>
-							<li><a href="#expert">Expert</a></li>
+						<ul class="inline-list coach-filters">
 							<li><a href="#premier">Premier</a></li>
+							<li><a href="#pro">Pro</a></li>
 							<li><a href="#senior">Senior</a></li>
+							<li><a href="#expert">Expert</a></li>
 						</ul>
 					</div>
 			    </div>
@@ -36,7 +36,64 @@ Template Name: Coaches Template
 			</div>
 
 <!--Coaches loop-->
-<div class="section-light" id="pro">
+<div class="section-light" id="premier">
+	<div class="row">
+		<div class="medium-12 columns">
+			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
+				<?php
+				//Premier Coaches
+				$args = array(
+					'post_type' => 'coaches',
+					'posts_per_page' => -1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'coaching_level',
+							'field' => 'slug',
+							'terms' => 'premier'
+						)
+					)
+				);
+				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+				$premier_query = new WP_Query($args);
+				echo '<a name="premier"><h2>Coaching Level: Premier</h2></a>';
+
+				if ( $premier_query->have_posts() ) {
+					while ( $premier_query->have_posts() ) {
+						$premier_query->the_post();
+				?>
+					
+				        <li>
+				            <a href="<?php the_permalink(); ?>" class="coach-block top-block">
+				            <div class="coach-image">
+				              <?php $coachheadshot = get_field('coach_headshot'); ?>
+				                <?php if($coachheadshot) { ?>
+				                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $coachheadshot['alt'];?>" />
+				                <?php } else { ?>
+				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
+				                <?php 
+				                } ?>
+				              <div class="coach-name">
+				                <h3><?php the_title(); ?></h3>
+				                <p><?php the_field('coaches_residence'); ?></p>
+				                <span>Read Full Bio</span>
+				              </div>
+				            </div>
+				          </a>
+				        </li>
+				    
+				<?php	
+					}
+				} else {
+					// no posts found
+				}
+				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+				/* Restore original Post Data */
+				wp_reset_postdata(); ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section-xtralight">
 	<div class="row">
 		<div class="medium-12 columns">
 			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
@@ -55,7 +112,7 @@ Template Name: Coaches Template
 				);
 				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
 				$coaches_query = new WP_Query($args);
-				echo '<h2>Coaching Level: Pro</h2>';
+				echo '<a name="pro"><h2>Coaching Level: Pro</h2></a>';
 
 				if ( $coaches_query->have_posts() ) {
 					while ( $coaches_query->have_posts() ) {
@@ -94,121 +151,7 @@ Template Name: Coaches Template
 		</div>
 	</div>
 </div>
-<div class="section-xtralight" id="expert">
-	<div class="row">
-		<div class="medium-12 columns">
-			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
-				<?php
-				//Expert Coaches
-				$args = array(
-					'post_type' => 'coaches',
-					'posts_per_page' => -1,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'coaching_level',
-							'field' => 'slug',
-							'terms' => 'expert'
-						)
-					)
-				);
-				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-				$senior_query = new WP_Query($args);
-				echo '<h2>Coaching Level: Expert</h2>';
-
-				if ( $senior_query->have_posts() ) {
-					while ( $senior_query->have_posts() ) {
-						$senior_query->the_post();
-				?>
-					
-				        <li>
-				            <a href="<?php the_permalink(); ?>" class="coach-block top-block">
-				            <div class="coach-image">
-				              <?php $coachheadshot = get_field('coach_headshot'); ?>
-				                <?php if($coachheadshot) { ?>
-				                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $coachheadshot['alt'];?>" />
-				                <?php } else { ?>
-				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
-				                <?php 
-				                } ?>
-				              <div class="coach-name">
-				                <h3><?php the_title(); ?></h3>
-				                <p><?php the_field('coaches_residence'); ?></p>
-				                <span>Read Full Bio</span>
-				              </div>
-				            </div>
-				          </a>
-				        </li>
-				    
-				<?php	
-					}
-				} else {
-					// no posts found
-				}
-				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-				/* Restore original Post Data */
-				wp_reset_postdata(); ?>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="section-light" id="premier">
-	<div class="row">
-		<div class="medium-12 columns">
-			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
-				<?php
-				//Premier Coaches
-				$args = array(
-					'post_type' => 'coaches',
-					'posts_per_page' => -1,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'coaching_level',
-							'field' => 'slug',
-							'terms' => 'premier'
-						)
-					)
-				);
-				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-				$premier_query = new WP_Query($args);
-				echo '<h2>Coaching Level: Premier</h2>';
-
-				if ( $premier_query->have_posts() ) {
-					while ( $premier_query->have_posts() ) {
-						$premier_query->the_post();
-				?>
-					
-				        <li>
-				            <a href="<?php the_permalink(); ?>" class="coach-block top-block">
-				            <div class="coach-image">
-				              <?php $coachheadshot = get_field('coach_headshot'); ?>
-				                <?php if($coachheadshot) { ?>
-				                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $coachheadshot['alt'];?>" />
-				                <?php } else { ?>
-				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
-				                <?php 
-				                } ?>
-				              <div class="coach-name">
-				                <h3><?php the_title(); ?></h3>
-				                <p><?php the_field('coaches_residence'); ?></p>
-				                <span>Read Full Bio</span>
-				              </div>
-				            </div>
-				          </a>
-				        </li>
-				    
-				<?php	
-					}
-				} else {
-					// no posts found
-				}
-				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-				/* Restore original Post Data */
-				wp_reset_postdata(); ?>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="section-xtralight" id="senior">
+<div class="section-light">
 	<div class="row">
 		<div class="medium-12 columns">
 			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
@@ -227,7 +170,7 @@ Template Name: Coaches Template
 				);
 				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
 				$senior_query = new WP_Query($args);
-				echo '<h2>Coaching Level: Senior</h2>';
+				echo '<a name="senior"><h2>Coaching Level: Senior</h2></a>';
 
 				if ( $senior_query->have_posts() ) {
 					while ( $senior_query->have_posts() ) {
@@ -249,6 +192,63 @@ Template Name: Coaches Template
 				                <p><?php the_field('coaches_residence'); ?></p>
 				                <span>Read Full Bio</span>
 
+				              </div>
+				            </div>
+				          </a>
+				        </li>
+				    
+				<?php	
+					}
+				} else {
+					// no posts found
+				}
+				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+				/* Restore original Post Data */
+				wp_reset_postdata(); ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section-xtralight">
+	<div class="row">
+		<div class="medium-12 columns">
+			<ul class="small-block-grid-2 medium-block-grid-4 text-center">
+				<?php
+				//Expert Coaches
+				$args = array(
+					'post_type' => 'coaches',
+					'posts_per_page' => -1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'coaching_level',
+							'field' => 'slug',
+							'terms' => 'expert'
+						)
+					)
+				);
+				add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+				$senior_query = new WP_Query($args);
+				echo '<a name="expert"><h2>Coaching Level: Expert</h2></a>';
+
+				if ( $senior_query->have_posts() ) {
+					while ( $senior_query->have_posts() ) {
+						$senior_query->the_post();
+				?>
+					
+				        <li>
+				            <a href="<?php the_permalink(); ?>" class="coach-block top-block">
+				            <div class="coach-image">
+				              <?php $coachheadshot = get_field('coach_headshot'); ?>
+				                <?php if($coachheadshot) { ?>
+				                    <img src="<?php echo $coachheadshot[sizes]['joints-thumb-400'];?>" alt="<?php echo $coachheadshot['alt'];?>" />
+				                <?php } else { ?>
+				                  <img src="<?php echo get_template_directory_uri(); ?>/library/images/cts-placeholder-400.jpg" alt="CTS Coach" />
+				                <?php 
+				                } ?>
+				              <div class="coach-name">
+				                <h3><?php the_title(); ?></h3>
+				                <p><?php the_field('coaches_residence'); ?></p>
+				                <span>Read Full Bio</span>
 				              </div>
 				            </div>
 				          </a>

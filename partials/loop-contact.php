@@ -1,29 +1,13 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-<header class="secondary-hero">
-		<?php $image = get_field('contact_hero_image'); ?>
-	    <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" />
-	   	<?php if( get_field('contact_hero_alignment') == 'text-on-left' ): ?>		
-		    <div class="description heroleft">
-				<?php the_field('contact_hero_text'); ?>
-			</div>
-		<?php elseif( get_field('contact_hero_alignment') == 'text-on-right' ): ?>
-			 <div class="description heroright">
-				<?php the_field('contact_hero_text'); ?>
-			</div>
-		<?php elseif( get_field('contact_hero_alignment') == 'text-in-center' ): ?>
-			 <div class="description herocenter">
-				<?php the_field('contact_hero_text'); ?>
-			</div>
-		<?php endif; ?>
-</header> <!-- end article header -->				
+<?php get_template_part( 'partials/cts', 'secondary-hero' ); ?>			
     <section class="entry-content clearfix" itemprop="articleBody">
 		  <!-- Main Page Content and Sidebar -->
 
 	  	<div class="section-light">
 	      <div class="row infographics-title">
 		    <div class="medium-4 columns">
-		    	<div class="deep-nav-container">
+		    	<div class="contact-map-container">
 		    		<?php if( get_field('contact_map')) { 
 		    			the_field('contact_map');
 		    		}

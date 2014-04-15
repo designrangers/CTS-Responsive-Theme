@@ -242,12 +242,27 @@ return '<img src="' . $image[0] . '" alt="' . $alt_text . '" />';
  
 if( function_exists('acf_add_options_sub_page') )
 {
+    acf_add_options_sub_page( 'Camp Calendar Content' );
     acf_add_options_sub_page( 'Camps Standard Text' );
-    acf_add_options_sub_page( 'Bucket List Standard Text' );
+    acf_add_options_sub_page( 'Camp Calendar Content' );
+    acf_add_options_sub_page( 'Bucket List Calendar Content' );
     acf_add_options_sub_page( 'Partner Logos' );
     acf_add_options_sub_page( 'Footer Options' );
 }
  
+/*
+*  Create an advanced sub page called 'Camp Calendar Content' that sits under the General options menu
+*/
+ 
+if( function_exists('acf_add_options_sub_page') )
+{
+    acf_add_options_sub_page(array(
+        'title' => 'Camp Calendar Content',
+        'parent' => 'options-general.php',
+        'capability' => 'manage_options'
+    ));
+}
+
 /*
 *  Create an advanced sub page called 'Camps Standard Text' that sits under the General options menu
 */
@@ -261,9 +276,21 @@ if( function_exists('acf_add_options_sub_page') )
     ));
 }
 
+/*
+*  Create an advanced sub page called 'Bucket List Calendar Content' that sits under the General options menu
+*/
+ 
+if( function_exists('acf_add_options_sub_page') )
+{
+    acf_add_options_sub_page(array(
+        'title' => 'Bucket List Calendar Content',
+        'parent' => 'options-general.php',
+        'capability' => 'manage_options'
+    ));
+}
  
 /*
-*  Create an advanced sub page called 'Camps Standard Text' that sits under the General options menu
+*  Create an advanced sub page called 'Bucket List Standard Text' that sits under the General options menu
 */
  
 if( function_exists('acf_add_options_sub_page') )

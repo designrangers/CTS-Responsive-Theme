@@ -66,6 +66,32 @@ jQuery(document).ready(function($) {
     
 	
 	// add all your scripts here
+
+    // Vertically center full-width images
+
+    $(document).ready(function() {
+ 
+    var imageHeight, wrapperHeight, overlap, container = $('.image-wrap');  
+ 
+    function centerImage() {
+        imageHeight = container.find('img').height();
+        wrapperHeight = container.height();
+        overlap = (wrapperHeight - imageHeight) / 2;
+        container.find('img').css('margin-top', overlap);
+    }
+     
+    $(window).on("load resize", centerImage);
+     
+    var el = document.getElementById('wrapper');
+    if (el.addEventListener) {  
+        el.addEventListener("webkitTransitionEnd", centerImage, false); // Webkit event
+        el.addEventListener("transitionend", centerImage, false); // FF event
+        el.addEventListener("oTransitionEnd", centerImage, false); // Opera event
+    }
+ 
+});
+
+
     
     // Smooth Scrolling for anchor links
     $('a[href=#camp-details]').
@@ -74,6 +100,46 @@ jQuery(document).ready(function($) {
             if (target.length)
             {
                 var top = target.offset().top - 150;
+                $('html,body').animate({scrollTop: top}, 1000);
+                return false;
+            }
+        });
+     $('a[href=#premier]').
+        click(function(){
+            var target = $('a[name=premier]');
+            if (target.length)
+            {
+                var top = target.offset().top - 180;
+                $('html,body').animate({scrollTop: top}, 1000);
+                return false;
+            }
+        });
+     $('a[href=#pro]').
+        click(function(){
+            var target = $('a[name=pro]');
+            if (target.length)
+            {
+                var top = target.offset().top - 180;
+                $('html,body').animate({scrollTop: top}, 1000);
+                return false;
+            }
+        });
+     $('a[href=#senior]').
+        click(function(){
+            var target = $('a[name=senior]');
+            if (target.length)
+            {
+                var top = target.offset().top - 180;
+                $('html,body').animate({scrollTop: top}, 1000);
+                return false;
+            }
+        });                        
+     $('a[href=#expert]').
+        click(function(){
+            var target = $('a[name=expert]');
+            if (target.length)
+            {
+                var top = target.offset().top - 180;
                 $('html,body').animate({scrollTop: top}, 1000);
                 return false;
             }

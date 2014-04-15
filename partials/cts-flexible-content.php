@@ -97,9 +97,34 @@
 	        				</div>
 	        			</div><!--end 3-column row-->	
 									<?php endif;
+			        elseif( get_row_layout() == 'cts_threecol_panel' ): ?>
+			        	<!--3-column row-->
+	        			<div class="section-light cts-threecol-panel">
+	        				<div class="row">
+	        					<?php if(get_sub_field('cts_panel_title')): ?>
+	        						<div class="medium-12 columns">
+	        							<h2><?php the_sub_field('cts_panel_title'); ?></h2>
+	        						</div>
+	        					<?php endif; ?>
+	        					<?php if(get_sub_field('cts_panel_one')): ?>
+		        					<div class="medium-4 columns">
+		        						<?php the_sub_field('cts_col1_image'); ?>
+		        						<?php the_sub_field('cts_panel_one'); ?>
+		        					</div>
+		        					<div class="medium-4 columns">
+		        						<?php the_sub_field('cts_col2_image'); ?>
+		        						<?php the_sub_field('cts_panel_two'); ?>
+		        					</div>
+		        					<div class="medium-4 columns">
+		        						<?php the_sub_field('cts_col3_image'); ?>
+		        						<?php the_sub_field('cts_panel_three'); ?>
+		        					</div>
+	        				</div>
+	        			</div><!--end 3-column panel-->	
+									<?php endif;									
 					elseif( get_row_layout() == 'cts_fullwidth_row' ): ?>
 							<?php if(get_sub_field('cts_fullwidth_image')): ?>
-								<div class="full-width-image">
+								<div class="full-width-image image-wrap in-page-fullwidth">
 									<?php $fullwidth = get_sub_field('cts_fullwidth_image'); ?>
 									<img src="<?php echo $fullwidth['url']?>" alt="<?php echo $fullwidth['alt']?>" />
 									<div class="caption-container">

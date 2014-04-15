@@ -7,31 +7,43 @@ Template Name: Homepage
 <?php get_header(); ?>
   <!-- Main hero image slider -->
     <div class="home-hero">
-        <ul class="cts-homeslider" data-orbit data-options="animation-speed:2500;pause-on-hover:true;bullets:false;slide_number:false;timer:false;">
-        <?php if( have_rows('cts_home_slideshow') ):
-          while ( have_rows('cts_home_slideshow') ) : the_row(); ?>
-          <li>
-            <?php $image = get_sub_field('cts_slide_image'); ?>
-              <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" />
-              <?php if( get_sub_field('cts_slide_text_alignment') == 'text-on-left' ): ?>   
-                <div class="orbit-caption description heroleft">
-                <?php the_sub_field('cts_slide_text'); ?>
-              </div>
-            <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-on-right' ): ?>
-               <div class="orbit-caption description heroright">
-                <?php the_sub_field('cts_slide_text'); ?>
-              </div>
-            <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-in-center' ): ?>
-               <div class="orbit-caption description herocenter">
-                <?php the_sub_field('cts_slide_text'); ?>
-              </div>
-              <?php endif; 
-            endwhile;
-          else :
-            // no rows found  
-          endif; ?>
-            </li>
-        </ul>
+      <div class="slideshow-wrapper">
+        <div class="preloader"></div>
+          <ul class="cts-homeslider" data-orbit 
+            data-options="timer_speed:6000;
+                          pause_on_hover:true;
+                          resume_on_mouseout:true;
+                          animation_speed:500;
+                          slide_number:false;
+                          container_class:orbit-container image-wrap;
+                          bullets:false;
+                          timer_show_progress_bar: false;
+                          ">
+          <?php if( have_rows('cts_home_slideshow') ):
+            while ( have_rows('cts_home_slideshow') ) : the_row(); ?>
+            <li>
+              <?php $image = get_sub_field('cts_slide_image'); ?>
+                <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" />
+                <?php if( get_sub_field('cts_slide_text_alignment') == 'text-on-left' ): ?>   
+                  <div class="orbit-caption description heroleft">
+                  <?php the_sub_field('cts_slide_text'); ?>
+                </div>
+              <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-on-right' ): ?>
+                 <div class="orbit-caption description heroright">
+                  <?php the_sub_field('cts_slide_text'); ?>
+                </div>
+              <?php elseif( get_sub_field('cts_slide_text_alignment') == 'text-in-center' ): ?>
+                 <div class="orbit-caption description herocenter">
+                  <?php the_sub_field('cts_slide_text'); ?>
+                </div>
+                <?php endif; 
+              endwhile;
+            else :
+              // no rows found  
+            endif; ?>
+              </li>
+          </ul>
+        </div>
     </div>
 
     <!-- Infographics -->
@@ -89,27 +101,27 @@ Template Name: Homepage
           </div>
       </div>
     </div>
-			
-			<div id="content">
-			
-				<div id="inner-content" class="row clearfix">
-			
-				    <div id="main" class="large-12 medium-12 columns" role="main">
-					
-					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					    	<?php get_template_part( 'partials/loop', 'home' ); ?>
-					    					
-					    <?php endwhile; else : ?>
-					
-					   		<?php get_template_part( 'partials/missing', 'content' ); ?>
+      
+      <div id="content">
+      
+        <div id="inner-content" class="row clearfix">
+      
+            <div id="main" class="large-12 medium-12 columns" role="main">
+          
+              <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+          
+                <?php get_template_part( 'partials/loop', 'home' ); ?>
+                        
+              <?php endwhile; else : ?>
+          
+                <?php get_template_part( 'partials/missing', 'content' ); ?>
 
-					    <?php endif; ?>
+              <?php endif; ?>
 
-    				</div> <!-- end #main -->
-				    
-				</div> <!-- end #inner-content -->
+            </div> <!-- end #main -->
+            
+        </div> <!-- end #inner-content -->
     
-			</div> <!-- end #content -->
+      </div> <!-- end #content -->
 
 <?php get_footer(); ?>

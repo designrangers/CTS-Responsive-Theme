@@ -5,14 +5,9 @@ Template Name: Blog Feed
 ?>
 
 <?php get_header(); ?>
-	<header class="section-light secondary-title-only">
-	      <div class="row infographics-title">
-		    <div class="medium-12 columns">
-		    	<h2>CTS Blog</h2>
-		    	<h3>Articles and tips</h3>
-		    </div>
-		</div>
-	</header>	
+
+<?php get_template_part( 'partials/cts', 'secondary-hero' ); ?>
+
 	<!--FEATURED POST-->
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 	<section class="blog-featured-row">

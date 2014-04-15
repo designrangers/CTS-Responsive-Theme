@@ -6134,9 +6134,45 @@ Ideal type size: 16px; Important number: 18px; 1:1:618: - golden section
 http://modularscale.com/scale/?px1=16&px2=18&ra1=1.618&ra2=0
 
 ******************************************************************/
+/*************** MOVE BODY BELOW FIXED HEADER ***************/
+body {
+  margin-top: 117px; }
+
 /*************** MOVE CONTENT DOWN WHEN LOGGED-IN ***************/
 body.admin-bar .header-full {
   margin-top: 32px; }
+
+/*************** IMAGE CLASSES ***************/
+.image-wrap {
+  -webkit-transition: max-width .5s ease-out;
+  /* Saf3.2+, Chrome */
+  -moz-transition: max-width .5s ease-out;
+  /* FF4+ */
+  -ms-transition: max-width .5s ease-out;
+  /* IE10? */
+  -o-transition: max-width .5s ease-out;
+  /* Opera 10.5+ */
+  transition: max-width .5s ease-out; }
+
+.image-wrap img {
+  -webkit-transition: margin-top .5s ease-out;
+  /* Saf3.2+, Chrome */
+  -moz-transition: margin-top .5s ease-out;
+  /* FF4+ */
+  -ms-transition: margin-top .5s ease-out;
+  /* IE10? */
+  -o-transition: margin-top .5s ease-out;
+  /* Opera 10.5+ */
+  transition: margin-top .5s ease-out; }
+
+/*************** GLOBAL WP CLASSES ***************/
+img.alignleft, .entry-content img.alignleft {
+  margin-right: 30px;
+  margin-bottom: 18px; }
+
+img.alignright, .entry-content img.alignright {
+  margin-left: 30px;
+  margin-bottom: 18px; }
 
 /*************** HEADER ***************/
 .header-full {
@@ -6180,13 +6216,50 @@ h1.logo {
   text-transform: uppercase; }
 
 /*************** DEEP NAV ***************/
-.deep-nav-container {
-  background: url("../images/sidenav-bkd.png") repeat-y right top;
-  border-right: 1px solid #ccc;
-  margin-top: -48px;
-  margin-bottom: -48px;
-  padding-top: 48px;
-  padding-bottom: 48px; }
+/*.deep-nav-container {
+	background: url('../images/sidenav-bkd.png') repeat-y right top;	
+	border-right: 1px solid #ccc;
+	margin-top: -48px;
+	margin-bottom: -48px;
+	padding-top: 48px;
+	padding-bottom: 48px;
+}
+*/
+.section-dark.deep-nav .row {
+  padding-top: 30px;
+  padding-bottom: 28px; }
+
+.deep-nav ul {
+  list-style: none;
+  margin: 0;
+  line-height: auto; }
+
+.deep-nav ul > li {
+  float: left;
+  margin-left: 1rem;
+  display: block; }
+
+.deep-nav ul > li {
+  padding-left: 15px; }
+
+.deep-nav ul li a {
+  font-size: 14px;
+  font-family: Montserrat, sans-serif;
+  color: #b3d4ed;
+  border-radius: 20px;
+  padding: 11px 16px 11px 16px;
+  text-transform: uppercase; }
+
+.deep-nav ul li a:hover {
+  color: #cb1e41; }
+
+.deep-nav ul li.active > a {
+  background: #b3d4ed;
+  color: #0a3253;
+  border-radius: 20px; }
+
+.deep-nav ul li.active > a:hover {
+  color: #0a3253; }
 
 .side-nav > li {
   border-bottom: 1px solid #ccc; }
@@ -6288,7 +6361,11 @@ h1.logo {
   background-position-y: 36px; }
 
 .footer-social, .footer-newsletter, .footer-cta {
+  clear: both;
   margin-bottom: 30px; }
+
+.footer-cta {
+  padding-top: 30px; }
 
 .cts-footer-newsletter {
   margin-bottom: 30px; }
@@ -6304,7 +6381,22 @@ h1.logo {
 .cts-footer-newsletter input[type="text"] {
   background-color: #2d353d;
   color: #fff;
-  border: 1px solid #050f1b; }
+  border: 1px solid #050f1b;
+  width: 85%;
+  float: left; }
+
+.footer-submit {
+  background-color: #cb1e41;
+  color: #fff;
+  border: none;
+  float: left;
+  width: 15%;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase; }
+
+.footer-submit:hover {
+  background-color: #b51027; }
 
 .footer-cta h4 {
   margin-bottom: 26px; }
@@ -6393,6 +6485,11 @@ h4 {
 h5 {
   color: #726c6a; }
 
+#content ul {
+  font-family: "Open Sans";
+  font-weight: normal;
+  font-size: 1rem; }
+
 /*************** SPECIAL LINK STYLES ***************/
 a:hover {
   -webkit-transition: color .5s ease;
@@ -6430,7 +6527,7 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   margin-bottom: -48px; }
 
 /*************** BUTTONS ***************/
-.cts-button {
+.cts-button, .gform_button {
   cursor: pointer;
   font-family: "Signika", sans-serif;
   font-weight: normal;
@@ -6450,10 +6547,6 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   border-color: #07243c;
   color: white;
   background: #cb1e41;
-  background: #e899a9;
-  /* Old browsers */
-  background: #d33f5d;
-  /* Old browsers */
   background: -moz-linear-gradient(top, #d33f5d 20%, #cb1e41 80%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #d33f5d), color-stop(80%, #cb1e41));
@@ -6478,10 +6571,13 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   padding-top: 11px;
   padding-bottom: 11px;
   text-transform: uppercase; }
-  .cts-button:hover, .cts-button:focus {
+  .cts-button:hover, .cts-button:focus, .gform_button:hover, .gform_button:focus {
     background-color: #07243c; }
-  .cts-button:hover, .cts-button:focus {
+  .cts-button:hover, .cts-button:focus, .gform_button:hover, .gform_button:focus {
     color: white; }
+
+.cts-button {
+  margin-top: 18px; }
 
 .cts-button:hover {
   background: #cb1e41;
@@ -6491,6 +6587,15 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
 
 .cta-buttons {
   margin-top: 47px; }
+
+input.cts-submit, .cts-forms .gform_button {
+  border-left: none;
+  border-left-style: none;
+  border-right: none;
+  border-right-style: none;
+  box-shadow: none;
+  padding-top: 7px;
+  padding-bottom: 7px; }
 
 /*************** HOMEPAGE ***************/
 .home-hero {
@@ -6505,6 +6610,8 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   right: 0;
   top: 200px; }
 
+.home-hero .slideshow-wrapper {
+  height: 655px; }
 .home-hero .orbit-container {
   max-height: 655px; }
 .home-hero .orbit-container .orbit-slides-container img {
@@ -6520,6 +6627,22 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   left: 8%; }
 .home-hero .orbit-next {
   margin-right: 39px; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption.heroleft, .secondary-hero .heroleft {
+  left: 0;
+  margin-left: 67px;
+  margin-right: 0;
+  width: 600px; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption.heroright, .secondary-hero .heroright {
+  right: 0;
+  margin-right: 67px;
+  width: 600px; }
+
+.orbit-container .orbit-slides-container > * .orbit-caption.herocenter, .secondary-hero .herocenter {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px; }
 
 .home-hero h2 {
   color: #fff;
@@ -6592,13 +6715,17 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   height: 100%; }
 
 .coach-name h3, .coach-name h4, .coach-name p, .coach-name span {
-  color: #fff; }
+  color: #fff;
+  padding-left: 11px;
+  padding-right: 11px; }
 .coach-name h3, .coach-name h4 {
   font-size: 16px;
   margin-bottom: 0; }
 .coach-name h3 {
   margin-top: 38%;
   font-size: 18px; }
+.coach-name p {
+  line-height: 1.3; }
 .coach-name span {
   display: none; }
 
@@ -6654,7 +6781,6 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
 /*************** SECONDARY PAGES ***************/
 .secondary-hero {
   position: relative;
-  max-height: 655px;
   overflow: hidden; }
 
 .secondary-hero .description {
@@ -6664,25 +6790,13 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   text-align: center; }
 .secondary-hero img {
   width: 100%; }
-.secondary-hero .heroleft {
-  padding-right: 50%;
-  padding-left: 15%; }
-.secondary-hero .heroright {
-  padding-left: 50%;
-  padding-right: 15%; }
-.secondary-hero .herocenter {
-  padding-left: 15%;
-  padding-right: 15%; }
-.secondary-hero h2 {
-  color: #fff;
-  text-shadow: 0px 1px 2px rgba(15, 47, 74, 0.8); }
 .secondary-hero h2 span {
   font-size: 29px;
   font-weight: 400; }
 
 .secondary-title .row {
   text-align: center;
-  padding-bottom: 0; }
+  padding-bottom: 38px; }
 
 .secondary-title-only {
   text-align: center; }
@@ -6712,8 +6826,19 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   font-size: 29px;
   font-weight: 400; }
 
+.page-intro-content {
+  font-size: 18px;
+  margin-top: 30px;
+  padding-left: 5%;
+  padding-right: 5%; }
+
+.page-intro-content p {
+  font-size: 18px; }
+
 .full-width-image {
-  position: relative; }
+  border-top: 1px solid #0a3253;
+  max-height: 450px;
+  overflow: hidden; }
 
 .full-width-image img {
   width: 100%; }
@@ -6732,6 +6857,56 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   margin-bottom: 0;
   max-width: 62.5rem;
   text-align: center; }
+
+.in-page-fullwidth {
+  position: relative; }
+
+.cts-threecol-panel {
+  padding-bottom: 48px; }
+
+.cts-threecol-panel .row {
+  background: #fff;
+  padding: 30px;
+  border: 1px solid #bec2c7;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2); }
+
+.cts-threecol-panel .row .medium-12.columns {
+  padding-left: 0;
+  padding-right: 0; }
+
+.cts-threecol-panel h2 {
+  background: #fff;
+  border-bottom: 1px solid #bec2c7;
+  padding-bottom: 30px;
+  text-align: center;
+  margin-left: -30px;
+  margin-right: -30px; }
+
+.intro-threecol-panel {
+  background: #fff;
+  padding: 30px;
+  border: 1px solid #bec2c7;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 48px;
+  margin-bottom: 48px;
+  margin-left: -5%;
+  margin-right: -5%; }
+
+.intro-threecol-panel:before, .intro-threecol-panel:after {
+  content: " ";
+  display: table; }
+
+.intro-threecol-panel:after {
+  clear: both; }
+
+.intro-threecol-panel h4 {
+  color: #222222;
+  text-transform: none; }
+
+.intro-threecol-panel p {
+  font-size: 14px; }
 
 /*************** CAMP PAGES ***************/
 .secondary-title .upcoming-camps-title {
@@ -6789,8 +6964,7 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
 
 /*************** CAMP SINGLE PAGES ***************/
 .camp-hero {
-  height: auto;
-  margin-top: 117px; }
+  height: auto; }
 
 .camp-hero date {
   color: #fff;
@@ -6800,6 +6974,9 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   font-style: normal; }
 .camp-hero .description {
   top: 135px; }
+
+.section-light .row.camp-single-container {
+  padding-top: 0; }
 
 .camp-single-content, .coach-single-content {
   background-color: #fff;
@@ -6824,6 +7001,9 @@ a.arrowlink:hover::after, a.arrowlink:focus::after {
   font-size: 18px;
   margin-bottom: 11px;
   text-transform: none; }
+
+#content .camp-single-facts ul {
+  font-family: Montserrat, sans-serif; }
 
 .coach-single-facts ul {
   font-family: Montserrat, sans-serif;
@@ -6962,8 +7142,8 @@ a.camp-more-details:hover {
   font-size: 29px; }
 
 /*************** SPECIAL BODY CLASSES ***************/
-body.page-template-page-coaches-php, body.tax-camps_type, body.tax-bucketlist_type, body.page-template-page-blog-php, body.single-post, body.archive.category {
-  margin-top: 117px; }
+body.home {
+  margin-top: 0; }
 
 /*************** BUCKET LIST PAGES ***************/
 ul.bucketlist-location {
@@ -6974,10 +7154,11 @@ ul.bucketlist-location {
 #bucketlist_gallery {
   width: 100%; }
 
-/*************** COACH SINGLE PAGES ***************/
-body.single-coaches {
-  margin-top: 117px; }
+/*************** COACHES PAGE ***************/
+.coach-filters > li {
+  width: 25%; }
 
+/*************** COACH SINGLE PAGES ***************/
 .single-coaches h5 {
   margin-top: 26px; }
 
@@ -7012,18 +7193,12 @@ a.coachlist {
   margin-bottom: -30px; }
 
 /*************** ATHLETES FEED PAGE ***************/
-body.page-template-page-athletes-php {
-  margin-top: 117px; }
-
 .reveal-athlete h4 {
   color: #4a4240;
   font-size: 13px;
   margin-bottom: 0; }
 
 /*************** SPECIALS ***************/
-body.page-template-page-specials-php {
-  margin-top: 117px; }
-
 body.page-template-page-specials-php .cts-special-item {
   border-bottom: 1px solid #ccc;
   margin-bottom: 11px;
@@ -7105,6 +7280,85 @@ body.page-template-page-specials-php .cts-special-item {
   letter-spacing: normal;
   text-transform: none; }
 
+/*************** FORMS AND COACHING LOGIN PAGE ***************/
+.coaching-login-wrapper {
+  width: 50%;
+  float: left; }
+
+.login-notes {
+  font-size: 14px;
+  width: 45%;
+  float: left;
+  margin-left: 5%; }
+
+.login-notes p {
+  font-size: 14px; }
+
+.coaching-login-content {
+  clear: both;
+  padding-top: 30px; }
+
+.login-single-content {
+  background-color: #fff;
+  border-top: 1px solid #fff;
+  padding: 30px;
+  position: relative;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2); }
+
+.cts-form-wrapper ul {
+  margin-left: 0; }
+
+.cts-form-wrapper li, .cts-form-wrapper form li {
+  margin-left: 0 !important;
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style: none !important;
+  overflow: visible; }
+
+.cts-form-wrapper .top_label input.medium, .cts-form-wrapper .top_label select.medium {
+  width: 47%; }
+
+.gform_wrapper .top_label .gfield_label, .cts-form-wrapper .top_label .gfield_label {
+  margin: 10px 0 4px 0;
+  font-weight: bold;
+  display: -moz-inline-stack;
+  display: inline-block;
+  line-height: 1.3em;
+  clear: both; }
+
+.gform_wrapper .gfield_required, .cts-form-wrapper .cts-required {
+  color: #790000;
+  margin-left: 4px; }
+
+html .gform_wrapper input[type=text], html .gform_wrapper input[type=url], html .gform_wrapper input[type=email], html .gform_wrapper input[type=tel], html .gform_wrapper input[type=number], html .gform_wrapper input[type=password] {
+  font-size: 16px; }
+
+html .gform_wrapper textarea {
+  font-size: 14px; }
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+  margin: 0; }
+
+html .gform_wrapper select {
+  font-size: 13px;
+  padding: 11px; }
+
+html .gform_wrapper li.gfield.gf_list_2col ul.gfield_checkbox li {
+  margin: 0; }
+
+html .gform_wrapper ul li.gfield {
+  margin-bottom: 11px; }
+
+/*************** CONTACT PAGE ***************/
+.contact-map-container {
+  background: url("../images/sidenav-bkd.png") repeat-y right top;
+  border-right: 1px solid #ccc;
+  margin-top: -48px;
+  margin-bottom: -48px;
+  padding-top: 48px;
+  padding-bottom: 48px; }
+
 /*************** SIDEBAR ***************/
 .sidebar {
   background: url("../images/sidebar-bkd.png") repeat-y left top;
@@ -7115,6 +7369,9 @@ body.page-template-page-specials-php .cts-special-item {
 
 /*************** MEDIA QUERIES ***************/
 @media only screen and (max-width: 40em) {
+  body {
+    margin-top: 0; }
+
   .header-full {
     position: relative;
     background-color: #0a3253; }
@@ -7152,6 +7409,13 @@ body.page-template-page-specials-php .cts-special-item {
   .orbit-container .orbit-prev, .orbit-container .orbit-next {
     top: 20%; }
 
+  .orbit-container .orbit-slides-container > * .orbit-caption.heroleft, .secondary-hero .heroleft, .orbit-container .orbit-slides-container > * .orbit-caption.heroright, .secondary-hero .heroright {
+    margin-left: 0;
+    margin-right: 0; }
+
+  .image-wrap img {
+    margin-top: 0 !important; }
+
   .top-block {
     margin-top: 30px; }
 
@@ -7179,7 +7443,75 @@ body.page-template-page-specials-php .cts-special-item {
   .side-nav-footer li.footer-login a {
     color: #cb1e41; }
   .side-nav-footer li.footer-login a:hover {
-    opacity: .5; } }
+    opacity: .5; }
+
+  /* Login Page */
+  .coaching-login-wrapper {
+    width: 100%;
+    float: none; }
+
+  .login-notes {
+    width: 100%;
+    float: none;
+    margin-left: 0; }
+
+  .section-dark.deep-nav .row {
+    padding-bottom: 12px; }
+
+  .deep-nav ul li a {
+    background: #4b99d3;
+    display: inline-block;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    color: #0a3253;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding: 5px 16px 5px 16px; }
+
+  .inline-list > li {
+    float: none; }
+
+  .coach-filters > li {
+    width: 100%; }
+
+  .camp-categories a {
+    padding: 7px 0 7px 0;
+    border-bottom: 1px solid #fff;
+    border-left: none; }
+
+  .camp-categories :last-child > a {
+    border-right: none; }
+
+  .camp-categories .current-cat > a:after {
+    display: none; }
+
+  .camp-single-content .tabs dd, .camp-secondary-info .camp-single-content .tabs dd {
+    float: none;
+    width: 100%; }
+
+  .tabs dd > a {
+    padding-top: 7px;
+    padding-bottom: 7px; }
+
+  .coach-name p {
+    display: none; } }
+@media only screen and (min-width: 90.063em) {
+  .full-width-image {
+    max-height: 600px; }
+
+  .home-hero .orbit-container {
+    max-height: 800px; }
+
+  .orbit-container .orbit-slides-container > * .orbit-caption.heroleft, .secondary-hero .heroleft {
+    left: 0;
+    margin-left: 15%;
+    margin-right: 0;
+    width: 600px; }
+
+  .orbit-container .orbit-slides-container > * .orbit-caption.heroright, .secondary-hero .heroright {
+    right: 0;
+    margin-right: 15%;
+    width: 600px; } }
 /*
 SMALL (BASE) SIZE
 These are the small/base styles. It's what people see on their phones. If

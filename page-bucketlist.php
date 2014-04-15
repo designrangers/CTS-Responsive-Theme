@@ -30,7 +30,7 @@ Template Name: Bucket List Overview Page
 	</div>
 </div>
 <div class="section-bright-cta">
-		<a href="/camp-calendar">See all bucket list events &raquo;</a>
+		<a href="/bucket-list/events/">See all bucket list events &raquo;</a>
 </div>
 
 <?php get_footer(); ?>

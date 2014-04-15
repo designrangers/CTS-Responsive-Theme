@@ -28,7 +28,7 @@ single-bookmarks.php
 								</div>
 						    </header> <!-- end article header -->
   					<section class="section-light" itemprop="articleBody">
-						<div class="row">
+						<div class="row camp-single-container">
 							<div class="medium-8 columns">
 								<div class="camp-single-hero">
 									<?php $campimage = get_field('camp_hero_image'); ?>
@@ -286,8 +286,8 @@ single-bookmarks.php
 											</div>
 											<div id="camps_what_to_bring" class="content">
 												<h4>What to Bring</h4>
-												<?php if( get_field('camps_what_to_bring' , 'option') ):
-													the_field('camps_what_to_bring');
+												<?php if( get_field('camps_what_to_bring', 'option') ):
+													the_field('camps_what_to_bring', 'option');
 												endif; ?>
 											</div>
 										</div>

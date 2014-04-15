@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Camps Overview Page
+Template Name: Coaching Login Template
 */
 ?>
 
@@ -10,7 +10,7 @@ Template Name: Camps Overview Page
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
-					    	<?php get_template_part( 'partials/loop', 'page' ); ?>
+					    	<?php get_template_part( 'partials/loop', 'login' ); ?>
 					    					
 					    <?php endwhile; else : ?>
 					
@@ -19,5 +19,6 @@ Template Name: Camps Overview Page
 					    <?php endif; ?>
 			    
 			</div> <!-- end #content -->
+
 
 <?php get_footer(); ?>

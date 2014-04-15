@@ -28,7 +28,7 @@ single-bookmarks.php
 								</div>
 						    </header> <!-- end article header -->
   					<section class="section-light" itemprop="articleBody">
-						<div class="row">
+						<div class="row camp-single-container">
 							<div class="medium-8 columns">
 								<div class="camp-single-hero">
 								<?php $bucketlist_image = get_field('bucketlist_hero_image');
@@ -40,8 +40,8 @@ single-bookmarks.php
 									<dl class="tabs" data-tab>
 									  <dd class="active"><a href="#bucketlist_description">Description</a></dd>
 									  <dd><a href="#bucketlist_includes">Includes</a></dd>
-									  <dd><a href="#bucketlist_gallery">Videos &amp; Photos</a></dd>
-									  <dd><a href="#bucketlist_testimonials">Quotes</a></dd>
+									  <dd style="width: 30%;"><a href="#bucketlist_gallery">Videos &amp; Photos</a></dd>
+									  <dd style="width: 20%;"><a href="#bucketlist_testimonials">Quotes</a></dd>
 									</dl>
 									<div class="tabs-content">
 										<div id="bucketlist_description" class="content active">
